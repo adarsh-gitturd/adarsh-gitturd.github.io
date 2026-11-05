@@ -4,11 +4,11 @@
 <meta name="description" content="Adarsh Wilson: projects, GitHub, achievements, education and photos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=Martian+Mono:wght@300..600&family=Schibsted+Grotesk:wght@400..700&display=swap">
 <style>
-/* Layout: a single-column portfolio (1240px sheets) rendered as a phosphor terminal.
-   An ASCII field fills the hero, scanlines cover the page, and a right-edge gauge
-   reports the scroll as a memory address. The dock swaps the phosphor colour. */
+/* Layout: one shared single-column portfolio (1240px sheets) re-skinned by eleven
+   "design worlds". Each world sets its own tokens, type, card treatment, hero scene
+   and the unit the right-edge gauge measures the scroll in. */
 @property --in{syntax:"<number>";inherits:false;initial-value:1}
 @property --f{syntax:"<number>";inherits:false;initial-value:0}
 :root{
@@ -23,9 +23,28 @@
   --ease:cubic-bezier(.2,.75,.2,1);
   color-scheme:dark;
 }
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#E7EBE6; --bg-2:#DEE4DE; --panel:#F2F4F0; --fg:#131B1D; --muted:#55625E; --faint:#8C9893;
+    --line:#C6CFC9; --contour:#A7B4AD; --accent:#A8501C; --water:#2B6C91; --veg:#4C7838; --on-accent:#FFF6EE;
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#E7EBE6; --bg-2:#DEE4DE; --panel:#F2F4F0; --fg:#131B1D; --muted:#55625E; --faint:#8C9893;
+  --line:#C6CFC9; --contour:#A7B4AD; --accent:#A8501C; --water:#2B6C91; --veg:#4C7838; --on-accent:#FFF6EE;
+  color-scheme:light;
+}
+
+/* ---------- the ten other worlds (single-look palettes) ---------- */
+:root[data-design="darkroom"]{--bg:#0D0807;--bg-2:#150C0A;--panel:#1A1110;--fg:#F2E6DE;--muted:#AC948B;--faint:#6E5852;--line:#2F1F1C;--contour:#5C2B22;--accent:#E8452C;--water:#E9A23E;--veg:#E3CDBF;--on-accent:#140806;
+  --display:"Bodoni Moda",Didot,"Bodoni 72","Times New Roman",serif;--body:"Hanken Grotesk",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace;--r:2px;--r-sm:2px;color-scheme:dark}
+:root[data-design="blueprint"]{--bg:#123E6B;--bg-2:#15457A;--panel:#164779;--fg:#EEF4FF;--muted:#B4CAE7;--faint:#7C9AC2;--line:#3E6898;--contour:#22548A;--accent:#FF8A63;--water:#A6D8FF;--veg:#FFE28A;--on-accent:#0E2D50;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;--r:0px;--r-sm:0px;--card:color-mix(in srgb,var(--panel) 82%,transparent);--card-b:1px solid var(--faint);color-scheme:dark}
+:root[data-design="observatory"]{--bg:#060A18;--bg-2:#0A1024;--panel:#0E1530;--fg:#ECEAF4;--muted:#A1A6C2;--faint:#5E6588;--line:#1D2648;--contour:#28335C;--accent:#E9C77B;--water:#8EB6FF;--veg:#F2A7B8;--on-accent:#14100A;
+  --display:"Italiana","Didot",Georgia,serif;--body:"Albert Sans",system-ui,sans-serif;--mono:"Azeret Mono",ui-monospace,monospace;--r:16px;--r-sm:999px;--card:color-mix(in srgb,var(--panel) 88%,transparent);color-scheme:dark}
 :root[data-design="terminal"]{--bg:#120C04;--bg-2:#181006;--panel:#1C1408;--fg:#FFB547;--muted:#C08C3C;--faint:#7A5A25;--line:#3E2D12;--contour:#4C3616;--accent:#FFDC96;--water:#FF8F3F;--veg:#FFE9BE;--on-accent:#120C04;
   --display:"VT323","IBM Plex Mono",ui-monospace,monospace;--body:"IBM Plex Mono",ui-monospace,monospace;--mono:"IBM Plex Mono",ui-monospace,monospace;--r:0px;--r-sm:0px;--shadow:inset 0 0 0 3px var(--bg),inset 0 0 0 4px var(--line);color-scheme:dark}
-
 /* phosphor colours: amber is the terminal default above */
 :root[data-design="terminal"][data-phosphor="green"]{--bg:#04110A;--bg-2:#061710;--panel:#081C13;--fg:#4CFF8F;--muted:#39B869;--faint:#22703F;--line:#123D24;--contour:#18492C;--accent:#B6FFD0;--water:#2EE6A8;--veg:#DFFFEA;--on-accent:#04110A}
 :root[data-design="terminal"][data-phosphor="red"]{--bg:#140506;--bg-2:#1B0709;--panel:#20090B;--fg:#FF5A5F;--muted:#C04347;--faint:#7A2A2D;--line:#401416;--contour:#4E191C;--accent:#FFB3B5;--water:#FF8A4C;--veg:#FFE0E1;--on-accent:#140506}
@@ -34,6 +53,21 @@
 :root[data-design="terminal"][data-phosphor="violet"]{--bg:#0D0716;--bg-2:#120A1E;--panel:#160C24;--fg:#B98CFF;--muted:#8A69C0;--faint:#57427A;--line:#2B1F42;--contour:#352650;--accent:#E3D1FF;--water:#FF7AD9;--veg:#F1E8FF;--on-accent:#0D0716}
 :root[data-design="terminal"][data-phosphor="pink"]{--bg:#14060F;--bg-2:#1B0814;--panel:#200A18;--fg:#FF6EC7;--muted:#C05296;--faint:#7A345F;--line:#401A32;--contour:#4E203D;--accent:#FFC2E7;--water:#FF9E6E;--veg:#FFE3F4;--on-accent:#14060F}
 :root[data-design="terminal"][data-phosphor="gray"]{--bg:#0C0C0C;--bg-2:#111111;--panel:#151515;--fg:#D8D8D8;--muted:#A0A0A0;--faint:#646464;--line:#2E2E2E;--contour:#383838;--accent:#FFFFFF;--water:#9FB4C7;--veg:#F2F2F2;--on-accent:#0C0C0C}
+
+:root[data-design="swiss"]{--bg:#F3F3F1;--bg-2:#E7E7E4;--panel:#FFFFFF;--fg:#0F0F0F;--muted:#565656;--faint:#8F8F8F;--line:#0F0F0F;--contour:#D3D3D0;--accent:#E10A1F;--water:#1747F5;--veg:#FFC400;--on-accent:#FFFFFF;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;--body:"Archivo","Helvetica Neue",Arial,sans-serif;--mono:"Red Hat Mono",ui-monospace,monospace;--r:0px;--r-sm:0px;--card:transparent;--card-b:0 solid transparent;color-scheme:light}
+:root[data-design="riso"]{--bg:#F5F2EF;--bg-2:#EDE7E2;--panel:#FBF9F7;--fg:#22307E;--muted:#5361A6;--faint:#959DC8;--line:#22307E;--contour:#C9CEE6;--accent:#FF4FA0;--water:#2D63D8;--veg:#FFB81C;--on-accent:#FFFFFF;
+  --display:"Bagel Fat One","Arial Black",sans-serif;--body:"Work Sans",system-ui,sans-serif;--mono:"Courier Prime","Courier New",monospace;--r:4px;--r-sm:3px;--card-b:2px solid var(--line);--shadow:6px 6px 0 var(--accent);color-scheme:light}
+:root[data-design="liquid"]{--bg:#0A090D;--bg-2:#121117;--panel:#18171F;--fg:#F5F1EC;--muted:#A6A1AC;--faint:#615D69;--line:#2A2831;--contour:#3A3641;--accent:#FF5A36;--water:#FF9A3C;--veg:#FFD25C;--on-accent:#1A0A04;
+  --display:"Unbounded","Arial Black",sans-serif;--body:"Sora",system-ui,sans-serif;--mono:"Fragment Mono",ui-monospace,monospace;--r:22px;--r-sm:999px;
+  --card:color-mix(in srgb,var(--panel) 52%,transparent);--card-b:1px solid color-mix(in srgb,var(--fg) 11%,transparent);--blur:blur(18px) saturate(1.3);--shadow:inset 0 1px 0 color-mix(in srgb,var(--fg) 9%,transparent),0 24px 60px -30px rgba(0,0,0,.7);color-scheme:dark}
+:root[data-design="signal"]{--bg:#0E1112;--bg-2:#13181A;--panel:#161C1E;--fg:#DCE5E2;--muted:#8D9A96;--faint:#52605C;--line:#243033;--contour:#1E2E31;--accent:#3FDFFF;--water:#FF5FA8;--veg:#FFD84D;--on-accent:#04161B;
+  --display:"Michroma","Eurostile",system-ui,sans-serif;--body:"Barlow",system-ui,sans-serif;--mono:"Share Tech Mono",ui-monospace,monospace;--r:4px;--r-sm:2px;color-scheme:dark}
+:root[data-design="herbarium"]{--bg:#E3E8DF;--bg-2:#D8DFD3;--panel:#F5F6F0;--fg:#1E2A1F;--muted:#586756;--faint:#919D8E;--line:#C1CABB;--contour:#B2BEAA;--accent:#9A3D2A;--water:#3F5F86;--veg:#4F7D3A;--on-accent:#FFFFFF;
+  --display:"Young Serif",Georgia,serif;--body:"Newsreader",Georgia,serif;--mono:"Cutive Mono","Courier New",monospace;--r:2px;--r-sm:2px;--shadow:0 1px 0 var(--line),0 20px 40px -28px rgba(30,42,31,.45);color-scheme:light}
+:root[data-design="pixel"]{--bg:#10182A;--bg-2:#152036;--panel:#192640;--fg:#F4F0DE;--muted:#A2B2BB;--faint:#5A6E82;--line:#2C405F;--contour:#1E2D47;--accent:#FFCC3D;--water:#5CC3F0;--veg:#9CE36A;--on-accent:#10182A;
+  --display:"Silkscreen","Courier New",monospace;--body:"Rubik",system-ui,sans-serif;--mono:"Pixelify Sans",ui-monospace,monospace;--r:0px;--r-sm:0px;--card-b:0 solid transparent;
+  --shadow:0 -4px 0 0 var(--line),0 4px 0 0 var(--line),-4px 0 0 0 var(--line),4px 0 0 0 var(--line);color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
@@ -70,6 +104,7 @@ button{font:inherit;color:inherit}
 .icon-btn:hover{border-color:var(--accent);color:var(--fg)}
 .icon-btn kbd{font-family:var(--mono);font-size:10px;border:1px solid var(--line);padding:1px 5px;border-radius:3px}
 .icon-btn svg{width:16px;height:16px}
+:root:not([data-design="survey"]) #theme-toggle{display:none}
 @media (max-width:980px){.links{display:none}.nav-tools{margin-left:auto}}
 
 /* ---------- hero ---------- */
@@ -308,18 +343,45 @@ footer{margin-top:clamp(80px,10vw,140px);border-top:1px solid var(--line)}
 .gauge-mark span{color:var(--faint)}
 @media (max-width:1320px){.gauge{display:none}}
 
-/* phosphor dock */
-.dock{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;display:flex;align-items:center;gap:14px;padding:8px 10px 8px 14px;max-width:calc(100vw - 32px);
-  background:color-mix(in srgb,var(--panel) 88%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid var(--line);box-shadow:inset 0 0 0 3px var(--bg),inset 0 0 0 4px var(--line),0 18px 44px -18px rgba(0,0,0,.7)}
-.dock-label{display:grid;line-height:1.15;white-space:nowrap}
-.dock-label small{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
-.dock-label b{font-family:var(--display);font-weight:400;font-size:20px;letter-spacing:.02em;color:var(--fg)}
-.swatches{display:flex;gap:6px}
-.swatch{position:relative;width:26px;height:26px;padding:0;border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:var(--k);cursor:pointer;display:grid;place-items:center;transition:transform .2s}
-.swatch::after{content:"";width:12px;height:12px;background:var(--c);box-shadow:0 0 10px var(--c)}
+/* design dock + chooser */
+.dock{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;display:flex;align-items:center;gap:4px;padding:5px;
+  background:color-mix(in srgb,var(--panel) 84%,transparent);-webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);border:1px solid var(--line);border-radius:calc(var(--r) + 8px);box-shadow:0 18px 44px -18px rgba(0,0,0,.6)}
+.dock button{border:0;background:transparent;cursor:pointer;color:var(--fg)}
+.dock-btn{width:40px;height:44px;display:grid;place-items:center;border-radius:calc(var(--r) + 4px);transition:background .2s}
+.dock-btn:hover{background:var(--bg-2)}
+.dock-btn svg{width:18px;height:18px}
+.dock-main{display:flex;align-items:center;gap:12px;height:44px;padding:0 16px 0 6px;border-radius:calc(var(--r) + 4px);transition:background .2s;min-width:180px}
+.dock-main:hover,.dock-main[aria-expanded="true"]{background:var(--bg-2)}
+.d-sw{width:32px;height:32px;border-radius:calc(var(--r-sm) + 2px);overflow:hidden;display:grid;grid-template-columns:2fr 1fr 1fr;flex:none;border:1px solid var(--line)}
+.d-sw i{display:block}
+.d-txt{display:grid;text-align:left;line-height:1.15}
+.d-txt small{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.d-txt b{font-family:var(--display);font-size:16px;font-weight:700}
+.dpanel{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;width:min(820px,calc(100vw - 32px));max-height:min(66vh,600px);overflow:auto;padding:16px;
+  background:var(--panel);border:1px solid var(--line);border-radius:calc(var(--r) + 6px);box-shadow:0 30px 80px -24px rgba(0,0,0,.6);animation:pop .35s var(--ease)}
+@keyframes pop{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
+.dp-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:2px 4px 14px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+.dp-head b{color:var(--fg);font-weight:500}
+.dp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.dp-card{display:grid;gap:10px;padding:8px 8px 12px;border:1px solid var(--line);border-radius:calc(var(--r-sm) + 4px);background:var(--bg-2);cursor:pointer;text-align:left;transition:border-color .2s,transform .3s var(--ease)}
+.dp-card:hover{transform:translateY(-2px);border-color:var(--faint)}
+.dp-card[aria-current="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.dp-prev{position:relative;aspect-ratio:16/7;border-radius:calc(var(--r-sm) + 1px);overflow:hidden;display:flex;align-items:flex-end;justify-content:space-between;padding:8px 10px}
+.dp-prev .aa{font-size:34px;line-height:.9}
+.dp-prev .bars{display:flex;gap:3px;align-self:flex-start}
+.dp-prev .bars i{width:10px;height:10px;border-radius:2px}
+.dp-card b{display:block;font-size:14px;padding:0 4px}
+.dp-card span{display:block;font-size:12.5px;color:var(--muted);padding:0 4px;line-height:1.4}
+.dp-num{font-family:var(--mono);font-size:10px;color:var(--faint)}
+.swatches{display:flex;gap:6px;padding:0 8px 0 12px;margin-left:4px;border-left:1px solid var(--line)}
+:root:not([data-design="terminal"]) .swatches{display:none}
+.dock .swatch{position:relative;width:24px;height:24px;padding:0;border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:var(--k);cursor:pointer;display:grid;place-items:center;transition:transform .2s}
+.swatch::after{content:"";width:11px;height:11px;background:var(--c);box-shadow:0 0 10px var(--c)}
 .swatch:hover{transform:translateY(-2px)}
 .swatch[aria-pressed="true"]{outline:2px solid var(--fg);outline-offset:2px}
-@media (max-width:440px){.dock-label{display:none}.dock{padding:8px}.swatches{gap:5px}.swatch{width:24px;height:24px}}
+@media (max-width:700px){[data-design="terminal"] .dock{flex-wrap:wrap;justify-content:center}[data-design="terminal"] .swatches{border-left:0;margin:0;padding:4px 4px 6px;width:100%;justify-content:center;gap:5px}}
+@media (max-width:700px){.dp-grid{grid-template-columns:1fr 1fr}.dock-main{min-width:0}}
+@media (max-width:400px){.dp-grid{grid-template-columns:1fr}}
 
 /* palette + lightbox */
 dialog{border:0;padding:0;background:transparent;color:var(--fg);max-width:100vw}
@@ -352,17 +414,82 @@ dialog::backdrop{background:color-mix(in srgb,var(--bg) 70%,transparent);backdro
 
 /* =================== per-design treatments =================== */
 
+/* Survey: variable-width letters swell under the cursor */
+[data-design="survey"] .mark,[data-design="survey"] .avatar{font-variation-settings:"wdth" 120}
+[data-design="survey"] .name .ch{transform:none;opacity:1;font-variation-settings:"wdth" calc(50 + var(--in)*50 + var(--f)*50),"wght" calc(200 + var(--in)*520 + var(--f)*180)}
+[data-design="survey"] .name .line + .line{color:transparent;-webkit-text-stroke:1.5px var(--fg)}
+[data-design="survey"] .name .line + .line .ch.hot{color:var(--accent);-webkit-text-stroke-color:var(--accent)}
+[data-design="survey"] .ptitle{font-variation-settings:"wdth" 70}
+[data-design="survey"] .proj:hover .ptitle{font-variation-settings:"wdth" 118}
+[data-design="survey"] .stat b,[data-design="survey"] .gh-stats b{font-variation-settings:"wdth" 118}
+[data-design="survey"] .big-cta{font-variation-settings:"wdth" 80}
+[data-design="survey"] .big-cta .w{font-variation-settings:"wdth" 80}
+[data-design="survey"] .big-cta .w:hover{font-variation-settings:"wdth" 140}
+[data-design="survey"] .summit h3{font-variation-settings:"wdth" 95}
+[data-design="survey"] .stop h3{font-variation-settings:"wdth" 92}
 
+/* Darkroom: safelight glow, film edges, italic didone */
+[data-design="darkroom"] body{background:radial-gradient(80% 50% at 50% 0%,color-mix(in srgb,var(--accent) 13%,transparent),transparent 70%) fixed,var(--bg)}
+[data-design="darkroom"] .grain{opacity:.12}
+[data-design="darkroom"] .name{font-weight:500;font-style:italic;letter-spacing:-.02em;line-height:.88;font-size:clamp(70px,14.5vw,220px)}
+[data-design="darkroom"] .name .ch{transform:none;filter:blur(calc((1 - var(--in))*12px));opacity:calc(.1 + var(--in)*.9);text-shadow:0 0 calc(var(--f)*42px) var(--accent);color:color-mix(in srgb,var(--fg),var(--accent) calc(var(--f)*100%))}
+[data-design="darkroom"] .name .line + .line{font-style:normal;font-weight:800}
+[data-design="darkroom"] .name .line + .line .ch{color:color-mix(in srgb,var(--accent),var(--water) calc(var(--f)*100%))}
+[data-design="darkroom"] .hero::before,[data-design="darkroom"] .hero::after{content:"";position:absolute;left:0;right:0;height:12px;z-index:2;pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0 16px,color-mix(in srgb,var(--fg) 16%,transparent) 16px 28px)}
+[data-design="darkroom"] .hero::before{top:76px}[data-design="darkroom"] .hero::after{bottom:10px}
+[data-design="darkroom"] h2,[data-design="darkroom"] .big-cta{font-style:italic;font-weight:500;letter-spacing:-.02em}
+[data-design="darkroom"] h2 .soft{font-style:normal;font-weight:800;color:var(--accent)}
+[data-design="darkroom"] .thumb{border-bottom:0;border:10px solid var(--bg);border-width:16px 10px}
+[data-design="darkroom"] .thumb::before{content:"";position:absolute;left:0;right:0;top:-12px;height:8px;z-index:2;background:repeating-linear-gradient(90deg,transparent 0 10px,color-mix(in srgb,var(--fg) 18%,transparent) 10px 18px)}
+[data-design="darkroom"] .shot button{border:8px solid var(--bg-2);border-bottom-width:28px}
+[data-design="darkroom"] .reticle i{border-style:dashed;border-color:var(--water)}
+[data-design="darkroom"] .reticle::before,[data-design="darkroom"] .reticle::after{background:transparent}
+[data-design="darkroom"] .stat b,[data-design="darkroom"] .summit h3,[data-design="darkroom"] .stop h3{font-style:italic;font-weight:600}
 
+/* Blueprint: drafting grid, title-block cards, redline accents */
+[data-design="blueprint"] body{background:
   linear-gradient(var(--line) 1px,transparent 1px) 0 0/100px 100px,linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/100px 100px,
   linear-gradient(var(--contour) 1px,transparent 1px) 0 0/20px 20px,linear-gradient(90deg,var(--contour) 1px,transparent 1px) 0 0/20px 20px,var(--bg)}
+[data-design="blueprint"] .grain{opacity:.08}
+[data-design="blueprint"] .hero-fade{background:radial-gradient(90% 70% at 20% 60%,color-mix(in srgb,var(--bg) 70%,transparent),transparent 65%)}
+[data-design="blueprint"] .name{font-weight:800;text-transform:uppercase;letter-spacing:.005em;font-size:clamp(84px,19vw,290px);line-height:.8}
+[data-design="blueprint"] .name .ch{transform:translateY(calc((1 - var(--in))*.25em + var(--f)*-.07em));color:color-mix(in srgb,var(--fg),var(--accent) calc(var(--f)*100%))}
+[data-design="blueprint"] .name .line + .line .ch{color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb,var(--fg),var(--accent) calc(var(--f)*100%))}
+[data-design="blueprint"] .name::after{content:"|◂—  NAME  ·  SCALE 1 : 1  ·  DWG A-00  —▸|";display:block;margin-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--water);white-space:nowrap;overflow:hidden;max-width:100%}
+[data-design="blueprint"] h2,[data-design="blueprint"] .big-cta{text-transform:uppercase;font-weight:800;letter-spacing:0}
+[data-design="blueprint"] h2 .soft{font-weight:300;color:var(--water)}
+[data-design="blueprint"] .proj::before,[data-design="blueprint"] .gh-card::before,[data-design="blueprint"] .repo::before{content:"";position:absolute;inset:5px;pointer-events:none;z-index:4;
   background:linear-gradient(var(--water),var(--water)) 0 0/12px 1px,linear-gradient(var(--water),var(--water)) 0 0/1px 12px,
   linear-gradient(var(--water),var(--water)) 100% 0/12px 1px,linear-gradient(var(--water),var(--water)) 100% 0/1px 12px,
   linear-gradient(var(--water),var(--water)) 0 100%/12px 1px,linear-gradient(var(--water),var(--water)) 0 100%/1px 12px,
   linear-gradient(var(--water),var(--water)) 100% 100%/12px 1px,linear-gradient(var(--water),var(--water)) 100% 100%/1px 12px;background-repeat:no-repeat}
+[data-design="blueprint"] .gh-card,[data-design="blueprint"] .repo{position:relative}
+[data-design="blueprint"] .pmeta{border:1px solid var(--faint);padding:6px 8px;color:var(--water)}
+[data-design="blueprint"] .btn-ghost,[data-design="blueprint"] .chip,[data-design="blueprint"] .stack span{border-style:dashed}
+[data-design="blueprint"] .route::after{box-shadow:none}
+[data-design="blueprint"] .reticle{width:20px;height:20px;margin:-10px 0 0 -10px}
+[data-design="blueprint"] .reticle::before{top:-2000px;bottom:-2000px;opacity:.5}
+[data-design="blueprint"] .reticle::after{left:-3000px;right:-3000px;opacity:.5}
+[data-design="blueprint"] .reticle i{border-radius:0}
 
+/* Observatory: star dust, arched portrait, brass glow */
+[data-design="observatory"] body{background:
   radial-gradient(1px 1px at 20% 30%,var(--muted),transparent) 0 0/170px 170px,radial-gradient(1px 1px at 70% 80%,var(--faint),transparent) 0 0/120px 120px,
   radial-gradient(1.4px 1.4px at 40% 60%,var(--fg),transparent) 0 0/330px 330px,radial-gradient(60% 40% at 80% 0%,color-mix(in srgb,var(--water) 10%,transparent),transparent 70%),var(--bg)}
+[data-design="observatory"] .grain{opacity:.05}
+[data-design="observatory"] .name{font-weight:400;text-transform:uppercase;letter-spacing:.05em;font-size:clamp(58px,12.5vw,196px);line-height:.98}
+[data-design="observatory"] .name .ch{text-shadow:0 0 calc(var(--f)*34px) var(--accent),0 0 calc(var(--f)*8px) var(--accent);color:color-mix(in srgb,var(--fg),var(--accent) calc(var(--f)*100%))}
+[data-design="observatory"] .name .line + .line{padding-left:1.4em}
+[data-design="observatory"] .name .line + .line .ch{color:color-mix(in srgb,var(--accent),var(--fg) calc(var(--f)*100%))}
+[data-design="observatory"] h2,[data-design="observatory"] .big-cta{font-weight:400;text-transform:uppercase;letter-spacing:.035em;line-height:1}
+[data-design="observatory"] h2 .soft{color:var(--accent)}
+[data-design="observatory"] .stat b,[data-design="observatory"] .gh-stats b,[data-design="observatory"] .summit h3,[data-design="observatory"] .stop h3,[data-design="observatory"] .ptitle{font-weight:400;letter-spacing:.02em}
+[data-design="observatory"] .portrait{border-radius:999px 999px var(--r) var(--r)}
+[data-design="observatory"] .proj:hover,[data-design="observatory"] .repo:hover{box-shadow:0 0 0 1px var(--accent),0 20px 60px -30px var(--accent)}
+[data-design="observatory"] .eyebrow::before{width:7px;height:7px;background:transparent;border:1px solid currentColor;transform:rotate(45deg)}
+[data-design="observatory"] .reticle{width:120px;height:120px;margin:-60px 0 0 -60px}
+[data-design="observatory"] .reticle::before{top:-14px;bottom:auto;height:22px}
+[data-design="observatory"] .reticle::after{left:-14px;right:auto;width:22px}
 
 /* Terminal: amber phosphor, scanlines, bracket controls */
 [data-design="terminal"] body{font-size:15px;text-shadow:0 0 6px color-mix(in srgb,var(--fg) 42%,transparent)}
@@ -383,16 +510,129 @@ dialog::backdrop{background:color-mix(in srgb,var(--bg) 70%,transparent);backdro
 [data-design="terminal"] .reticle::before,[data-design="terminal"] .reticle::after{display:none}
 [data-design="terminal"] .reticle i{border-radius:0;background:var(--accent);border:0;animation:blink 1s steps(1) infinite}
 
+/* Swiss: heavy rules, numbered sheets, red/black/blue */
+[data-design="swiss"] .grain{opacity:0}
+[data-design="swiss"] main{counter-reset:sec}
+[data-design="swiss"] section.sheet{counter-increment:sec}
+[data-design="swiss"] .hero-fade{background:linear-gradient(90deg,color-mix(in srgb,var(--bg) 82%,transparent) 0%,transparent 55%),linear-gradient(to bottom,transparent 75%,var(--bg))}
+[data-design="swiss"] .name{font-weight:900;font-size:clamp(72px,16vw,240px);line-height:.8;letter-spacing:-.055em}
+[data-design="swiss"] .name .ch{transform:translateY(calc(var(--f)*.05em));opacity:1;font-variation-settings:"wdth" calc(62 + var(--in)*38 + var(--f)*25),"wght" 900}
+[data-design="swiss"] .name .line + .line{color:var(--accent);padding-left:0}
+[data-design="swiss"] .sec-head{grid-template-columns:auto minmax(0,1fr) auto;border-top:6px solid var(--fg);padding-top:18px}
+[data-design="swiss"] .sec-head::before{content:counter(sec);font-family:var(--display);font-weight:900;font-size:clamp(80px,11vw,170px);line-height:.74;color:var(--accent);letter-spacing:-.06em;align-self:start}
+[data-design="swiss"] h2,[data-design="swiss"] .big-cta{font-weight:900;letter-spacing:-.045em;font-variation-settings:"wdth" 75}
+[data-design="swiss"] h2 .soft{color:var(--fg);font-weight:300}
+[data-design="swiss"] .eyebrow{color:var(--fg)}
+[data-design="swiss"] .eyebrow::before{width:10px;height:10px;background:var(--accent)}
+[data-design="swiss"] .proj,[data-design="swiss"] .repo,[data-design="swiss"] .gh-card{border-top:6px solid var(--fg)}
+[data-design="swiss"] .proj:hover,[data-design="swiss"] .repo:hover{border-top-color:var(--accent)}
+[data-design="swiss"] .pbody,[data-design="swiss"] .repo,[data-design="swiss"] .gh-card{padding-inline:0}
+[data-design="swiss"] .thumb{border-bottom:0}
+[data-design="swiss"] .ptitle{text-shadow:none;color:var(--fg)}
+[data-design="swiss"] .stat b{font-weight:900;letter-spacing:-.05em}
+[data-design="swiss"] .btn-ghost{border:2px solid var(--fg)}
+[data-design="swiss"] .reticle{width:18px;height:18px;margin:-9px 0 0 -9px}
+[data-design="swiss"] .reticle i{background:var(--accent);border:0}
+[data-design="swiss"] .reticle::before,[data-design="swiss"] .reticle::after{display:none}
+@media (max-width:760px){[data-design="swiss"] .sec-head{grid-template-columns:1fr}}
 
+/* Riso: paper, two-ink misregistration, taped cards */
+[data-design="riso"] .grain{opacity:.4;mix-blend-mode:multiply}
+[data-design="riso"] .hero-fade{background:radial-gradient(90% 70% at 18% 60%,color-mix(in srgb,var(--bg) 80%,transparent),transparent 60%),linear-gradient(to bottom,transparent 78%,var(--bg))}
+[data-design="riso"] .name{font-weight:400;font-size:clamp(60px,13vw,200px);line-height:.9;letter-spacing:-.01em;color:var(--water)}
+[data-design="riso"] .name .ch{text-shadow:calc(.03em + var(--f)*.07em) calc(.02em + var(--f)*.05em) 0 color-mix(in srgb,var(--accent) 85%,transparent);transform:rotate(calc(var(--f)*-7deg)) translateY(calc((1 - var(--in))*.6em))}
+[data-design="riso"] .name .line + .line .ch{color:var(--accent);text-shadow:calc(-.03em - var(--f)*.07em) calc(.02em + var(--f)*.05em) 0 color-mix(in srgb,var(--water) 80%,transparent)}
+[data-design="riso"] h2,[data-design="riso"] .big-cta{font-weight:400;letter-spacing:-.01em;text-shadow:.05em .035em 0 color-mix(in srgb,var(--accent) 80%,transparent)}
+[data-design="riso"] h2 .soft{color:var(--water);font-weight:400}
+[data-design="riso"] .proj:nth-child(odd){rotate:-.7deg}[data-design="riso"] .proj:nth-child(even){rotate:.6deg}
+[data-design="riso"] .repo:nth-child(3n+1){rotate:.5deg}[data-design="riso"] .repo:nth-child(3n+2){rotate:-.4deg}
+[data-design="riso"] .proj::before{content:"";position:absolute;top:0;left:50%;width:96px;height:22px;margin-left:-48px;background:color-mix(in srgb,var(--veg) 65%,transparent);rotate:-2.5deg;z-index:4;mix-blend-mode:multiply}
+[data-design="riso"] .proj:hover,[data-design="riso"] .repo:hover{box-shadow:10px 10px 0 var(--water)}
+[data-design="riso"] .thumb{border-bottom:2px solid var(--line)}
+[data-design="riso"] .ptitle{text-shadow:.04em .03em 0 var(--accent);font-weight:400}
+[data-design="riso"] .eyebrow::before{height:3px;background:var(--accent)}
+[data-design="riso"] .btn-solid{box-shadow:4px 4px 0 var(--water)}
+[data-design="riso"] .stat b,[data-design="riso"] .summit h3,[data-design="riso"] .stop h3,[data-design="riso"] .gh-stats b,[data-design="riso"] .contact-links b{font-weight:400}
+[data-design="riso"] .reticle i{background:color-mix(in srgb,var(--accent) 35%,transparent);mix-blend-mode:multiply}
 
+/* Liquid: molten blobs behind frosted glass */
+[data-design="liquid"] body{background:radial-gradient(40% 35% at 88% 18%,color-mix(in srgb,var(--accent) 20%,transparent),transparent 70%) fixed,radial-gradient(35% 30% at 8% 85%,color-mix(in srgb,var(--veg) 10%,transparent),transparent 70%) fixed,var(--bg)}
+[data-design="liquid"] .grain{opacity:.05}
+[data-design="liquid"] .name{font-weight:800;font-size:clamp(48px,10.5vw,156px);line-height:.95;letter-spacing:-.045em}
+[data-design="liquid"] .name .ch{background:linear-gradient(180deg,var(--fg) 15%,var(--veg) 55%,var(--accent) 95%);-webkit-background-clip:text;background-clip:text;color:transparent;transform:scale(calc(1 + var(--f)*.14)) translateY(calc((1 - var(--in))*.4em))}
+[data-design="liquid"] .name .line + .line{padding-left:.6em}
+[data-design="liquid"] h2,[data-design="liquid"] .big-cta{font-weight:700;letter-spacing:-.04em;font-size:clamp(34px,5.4vw,78px)}
+[data-design="liquid"] .big-cta{font-size:clamp(44px,8vw,128px)}
+[data-design="liquid"] h2 .soft{background:linear-gradient(90deg,var(--accent),var(--veg));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:300}
+[data-design="liquid"] .thumb{border-bottom:0;margin:8px;border-radius:calc(var(--r) - 8px)}
+[data-design="liquid"] .stat b,[data-design="liquid"] .gh-stats b{font-weight:600;letter-spacing:-.05em}
+[data-design="liquid"] .reticle{display:none}
+[data-design="liquid"] .summit:hover{padding-left:20px}
 
+/* Signal: oscilloscope graticule, channel colours, bracket corners */
+[data-design="signal"] .grain{opacity:.07}
+[data-design="signal"] .name{font-weight:400;font-size:clamp(38px,8.6vw,132px);line-height:1.04;letter-spacing:.02em;text-transform:uppercase}
+[data-design="signal"] .name .ch{transform:translateY(calc(var(--f)*-.14em + (1 - var(--in))*.3em));color:color-mix(in srgb,var(--fg),var(--accent) calc(var(--f)*100%));text-shadow:0 0 calc(4px + var(--f)*20px) color-mix(in srgb,var(--accent) 55%,transparent)}
+[data-design="signal"] .name .line + .line .ch{color:transparent;-webkit-text-stroke:1px var(--accent)}
+[data-design="signal"] h2,[data-design="signal"] .big-cta{font-weight:400;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(26px,4.2vw,58px);line-height:1.08}
+[data-design="signal"] .big-cta{font-size:clamp(34px,6.4vw,100px)}
+[data-design="signal"] h2 .soft{color:var(--accent)}
+[data-design="signal"] .ptitle,[data-design="signal"] .stat b,[data-design="signal"] .gh-stats b,[data-design="signal"] .summit h3,[data-design="signal"] .stop h3,[data-design="signal"] .contact-links b{font-weight:400;letter-spacing:0}
+[data-design="signal"] .ptitle{font-size:clamp(18px,2.2vw,28px);text-transform:uppercase}
+[data-design="signal"] .stat b{font-size:clamp(34px,4.6vw,64px)}
+[data-design="signal"] .proj::before,[data-design="signal"] .repo::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:4;
   background:linear-gradient(var(--accent),var(--accent)) 0 0/16px 2px,linear-gradient(var(--accent),var(--accent)) 0 0/2px 16px,
   linear-gradient(var(--accent),var(--accent)) 100% 100%/16px 2px,linear-gradient(var(--accent),var(--accent)) 100% 100%/2px 16px;background-repeat:no-repeat;opacity:.8}
+[data-design="signal"] .repo{position:relative}
+[data-design="signal"] .eyebrow::before{width:28px;height:8px;background:none;border:solid currentColor;border-width:0 0 1px 1px;transform:skewX(-20deg)}
+[data-design="signal"] .btn-solid{box-shadow:0 0 22px -4px var(--accent)}
 
+/* Herbarium: specimen sheets, serif labels, pressed-leaf greens */
+[data-design="herbarium"] .grain{opacity:.35;mix-blend-mode:multiply}
+[data-design="herbarium"] .hero-fade{background:radial-gradient(90% 70% at 18% 60%,color-mix(in srgb,var(--bg) 82%,transparent),transparent 62%),linear-gradient(to bottom,transparent 80%,var(--bg))}
+[data-design="herbarium"] .name{font-weight:400;font-size:clamp(64px,13.5vw,206px);line-height:.92;letter-spacing:-.025em}
+[data-design="herbarium"] .name .ch{transform-origin:50% 100%;transform:rotate(calc(var(--f)*7deg + (1 - var(--in))*-14deg));opacity:calc(.1 + var(--in)*.9)}
+[data-design="herbarium"] .name .line + .line{font-family:var(--body);font-style:italic;font-weight:400;color:var(--veg);padding-left:1.1em;letter-spacing:-.03em}
+[data-design="herbarium"] h2,[data-design="herbarium"] .big-cta{font-weight:400;letter-spacing:-.02em}
+[data-design="herbarium"] h2 .soft,[data-design="herbarium"] .big-cta .w:nth-child(even){font-family:var(--body);font-style:italic;color:var(--veg)}
+[data-design="herbarium"] .ptitle,[data-design="herbarium"] .stat b,[data-design="herbarium"] .gh-stats b,[data-design="herbarium"] .summit h3,[data-design="herbarium"] .stop h3,[data-design="herbarium"] .contact-links b{font-weight:400;letter-spacing:-.01em}
+[data-design="herbarium"] .ptitle{text-shadow:none}
+[data-design="herbarium"] .pmeta{border:1px solid var(--line);background:var(--bg);padding:7px 10px;color:var(--muted)}
+[data-design="herbarium"] .portrait{rotate:-1.4deg;overflow:visible}
+[data-design="herbarium"] .portrait::before,[data-design="herbarium"] .portrait::after{content:"";position:absolute;width:84px;height:24px;background:color-mix(in srgb,var(--panel) 70%,transparent);border:1px solid var(--line);z-index:3}
+[data-design="herbarium"] .portrait::before{top:-10px;left:-18px;rotate:-38deg}
+[data-design="herbarium"] .portrait::after{bottom:-10px;right:-18px;rotate:-38deg}
+[data-design="herbarium"] .portrait canvas,[data-design="herbarium"] .portrait img{border-radius:var(--r)}
+[data-design="herbarium"] .eyebrow{color:var(--accent);font-style:normal}
+[data-design="herbarium"] .route::after{box-shadow:none}
+[data-design="herbarium"] .reticle i{border-color:var(--veg)}
+[data-design="herbarium"] .reticle::before,[data-design="herbarium"] .reticle::after{background:var(--veg)}
 
+/* Pixel: stepped borders, drop-pixel shadows */
+[data-design="pixel"] canvas{image-rendering:pixelated}
+[data-design="pixel"] .grain{opacity:0}
+[data-design="pixel"] .name{font-weight:700;text-transform:uppercase;font-size:clamp(44px,10.5vw,160px);line-height:1;letter-spacing:0}
+[data-design="pixel"] .name .ch{transition:--in .6s steps(5),--f .25s steps(3),color .2s;transform:translateY(calc(var(--f)*-.16em + (1 - var(--in))*.6em));text-shadow:.07em .07em 0 var(--water)}
+[data-design="pixel"] .name .line + .line .ch{color:var(--accent);text-shadow:.07em .07em 0 var(--line)}
+[data-design="pixel"] h2,[data-design="pixel"] .big-cta{font-weight:700;text-transform:uppercase;letter-spacing:0;font-size:clamp(30px,5vw,72px);line-height:1.05;text-shadow:.06em .06em 0 var(--line)}
+[data-design="pixel"] .big-cta{font-size:clamp(40px,7.5vw,118px)}
+[data-design="pixel"] h2 .soft{color:var(--accent)}
+[data-design="pixel"] .ptitle,[data-design="pixel"] .stat b,[data-design="pixel"] .gh-stats b,[data-design="pixel"] .summit h3,[data-design="pixel"] .stop h3,[data-design="pixel"] .contact-links b{font-weight:700;letter-spacing:0;text-transform:uppercase}
+[data-design="pixel"] .ptitle{font-size:clamp(20px,2.6vw,34px)}
+[data-design="pixel"] .stat b{font-size:clamp(36px,5vw,72px)}
+[data-design="pixel"] .proj:hover,[data-design="pixel"] .repo:hover{box-shadow:0 -4px 0 0 var(--accent),0 4px 0 0 var(--accent),-4px 0 0 0 var(--accent),4px 0 0 0 var(--accent)}
+[data-design="pixel"] .btn{box-shadow:4px 4px 0 var(--line)}
+[data-design="pixel"] .btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--water)}
+[data-design="pixel"] .eyebrow::before{width:8px;height:8px}
+[data-design="pixel"] .stop .pin,[data-design="pixel"] .avatar,[data-design="pixel"] .strip-ctl button,[data-design="pixel"] .lb-bar button{border-radius:0}
+[data-design="pixel"] .route::before{border-left-style:dotted;border-left-width:4px;left:18px}
+[data-design="pixel"] .reticle{width:20px;height:20px;margin:-10px 0 0 -10px}
+[data-design="pixel"] .reticle i{border-radius:0;border-width:3px}
+[data-design="pixel"] .reticle::before,[data-design="pixel"] .reticle::after{display:none}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
-</style></head><body>
+</style>
+</head><body>
 
 <div class="grain" aria-hidden="true"></div>
 <a class="skip" href="#about">Skip to content</a>
@@ -405,6 +645,9 @@ dialog::backdrop{background:color-mix(in srgb,var(--bg) 70%,transparent);backdro
       <button class="icon-btn" id="open-palette" type="button" aria-label="Open quick navigation">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
         <span>Jump to</span><kbd id="kbd-hint">Ctrl K</kbd>
+      </button>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch between light and dark theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></svg>
       </button>
     </div>
   </div>
@@ -526,13 +769,19 @@ dialog::backdrop{background:color-mix(in srgb,var(--bg) 70%,transparent);backdro
 
 <div class="gauge" aria-hidden="true"><div class="gauge-scale"></div><div class="gauge-mark" id="gauge-mark"><div><b id="gauge-val">0000 m</b><span id="gauge-sec">Base</span></div></div></div>
 
-<div class="dock" id="dock" role="group" aria-label="Screen colour">
-  <span class="dock-label"><small>Phosphor</small><b id="d-name">Amber</b></span>
-  <div class="swatches" id="swatches"></div>
+<div class="dock" id="dock" role="group" aria-label="Design switcher">
+  <button class="dock-btn" id="d-prev" type="button" aria-label="Previous design"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="dock-main" id="d-open" type="button" aria-expanded="false" aria-controls="dpanel"><span class="d-sw" id="d-sw"></span><span class="d-txt"><small>Design <span id="d-num">01</span> / <span id="d-total">11</span></small><b id="d-name">Survey</b></span></button>
+  <button class="dock-btn" id="d-next" type="button" aria-label="Next design"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7"/></svg></button>
+  <div class="swatches" id="swatches" role="group" aria-label="Terminal colour"></div>
+</div>
+<div class="dpanel" id="dpanel" hidden>
+  <div class="dp-head"><b>Choose a design</b><span>[ ] cycle designs · { } cycle Terminal colours</span></div>
+  <div class="dp-grid" id="dp-grid"></div>
 </div>
 
 <dialog class="pal" id="palette" aria-label="Quick navigation">
-  <div class="pal-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input id="pal-q" type="text" placeholder="Jump to a section, colour, link or action" autocomplete="off" aria-label="Search"></div>
+  <div class="pal-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input id="pal-q" type="text" placeholder="Jump to a section, design, link or action" autocomplete="off" aria-label="Search"></div>
   <ul class="pal-list" id="pal-list" role="listbox"></ul>
   <div class="pal-foot"><span>↑↓ move</span><span>↵ open</span><span>esc close</span></div>
 </dialog>
@@ -556,11 +805,11 @@ dialog::backdrop{background:color-mix(in srgb,var(--bg) 70%,transparent);backdro
    EDIT EVERYTHING ABOUT YOU HERE.
    Text marked EXAMPLE is placeholder content. Replace it with your own.
    Images: put a URL or a relative path (e.g. "photos/me.jpg") in `src`.
-   Leave `src` empty and a generated ASCII plate is drawn instead.
-   DEFAULT_PHOSPHOR picks the screen colour visitors see first:
-   amber, green, red, blue, cyan, violet, pink or gray.
+   Leave `src` empty and the current design draws a generated plate instead.
+   DEFAULT_DESIGN picks the design visitors see first.
    ===================================================================== */
-const DEFAULT_PHOSPHOR = "amber";
+const DEFAULT_DESIGN = "survey";
+const DEFAULT_PHOSPHOR = "amber"; // Terminal colour: amber, green, red, blue, cyan, violet, pink or gray
 const PROFILE = {
   first: "Adarsh",
   last: "Wilson",
@@ -697,12 +946,209 @@ function perlin(seed) {
 const NC = {}; const N = seed => NC[seed] || (NC[seed] = perlin(seed));
 const rng = seed => { let s = (seed * 2654435761) >>> 0 || 7; return () => (s = (s * 1664525 + 1013904223) >>> 0) / 4294967296; };
 
+// Marching squares over a (cols+1) x (rows+1) grid of samples.
+function drawContours(ctx, vals, cols, rows, cell, levels, style) {
+  const W = cols + 1;
+  for (let li = 0; li < levels.length; li++) {
+    const L = levels[li];
+    ctx.beginPath();
+    for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+      const a = vals[j * W + i], b = vals[j * W + i + 1], c = vals[(j + 1) * W + i + 1], d = vals[(j + 1) * W + i];
+      const k = (a > L ? 8 : 0) | (b > L ? 4 : 0) | (c > L ? 2 : 0) | (d > L ? 1 : 0);
+      if (k === 0 || k === 15) continue;
+      const x = i * cell, y = j * cell;
+      const T = () => [x + cell * (L - a) / (b - a), y], R = () => [x + cell, y + cell * (L - b) / (c - b)];
+      const B = () => [x + cell * (L - d) / (c - d), y + cell], Lf = () => [x, y + cell * (L - a) / (d - a)];
+      const seg = (p, q) => { ctx.moveTo(p[0], p[1]); ctx.lineTo(q[0], q[1]); };
+      switch (k) {
+        case 1: case 14: seg(Lf(), B()); break;
+        case 2: case 13: seg(B(), R()); break;
+        case 3: case 12: seg(Lf(), R()); break;
+        case 4: case 11: seg(T(), R()); break;
+        case 6: case 9: seg(T(), B()); break;
+        case 7: case 8: seg(T(), Lf()); break;
+        case 5: seg(T(), Lf()); seg(B(), R()); break;
+        case 10: seg(T(), R()); seg(Lf(), B()); break;
+      }
+    }
+    const st = style(li);
+    ctx.strokeStyle = st.color; ctx.globalAlpha = st.alpha; ctx.lineWidth = st.width; ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+}
+const makeLevels = (from, to, step) => { const out = []; for (let v = from; v <= to + 1e-9; v += step) out.push(v); return out; };
+let GRAIN;
+function grainTile() {
+  if (GRAIN) return GRAIN;
+  GRAIN = document.createElement("canvas"); GRAIN.width = GRAIN.height = 160;
+  const g = GRAIN.getContext("2d"), im = g.createImageData(160, 160);
+  for (let i = 0; i < im.data.length; i += 4) { const v = Math.random() * 255; im.data[i] = im.data[i + 1] = im.data[i + 2] = v; im.data[i + 3] = Math.random() * 120; }
+  g.putImageData(im, 0, 0); return GRAIN;
+}
+const offscreen = (w, h) => { const c = document.createElement("canvas"); c.width = w; c.height = h; return c; };
+
 /* =====================================================================
-   SCENE: the ASCII field. scene(seed) returns
+   SCENES: one generative world per design. Each scene(seed) returns
    { resize(w, h, isHero), draw(ctx, w, h, t, mouse, age, still, dt) }.
    The hero runs it every frame; thumbnails and placeholders draw it once.
    ===================================================================== */
 const SCENES = {
+  survey(seed) {
+    const n = N(seed), levels = makeLevels(-.95, 1.6, .065);
+    let W, H, hero, cell, cols, rows, vals, lt = 0, lm = { a: 0 };
+    const field = (px, py, t, m) => {
+      const s = hero ? .0024 : .006;
+      let v = n(px * s + t + seed * 3.1, py * s - t * .55) * .85 + n(px * s * 2.4 - t * 1.2, py * s * 2.4 + t * .4) * .28;
+      const cx = hero ? W * .78 : W * .62, cy = hero ? H * .35 : H * .42, pr = hero ? W * .22 : Math.max(W, H) * .3;
+      v += (hero ? .55 : .7) * Math.exp(-((px - cx) ** 2 + (py - cy) ** 2) / (2 * pr * pr));
+      if (m.a) v += m.a * Math.exp(-((px - m.x) ** 2 + (py - m.y) ** 2) / (2 * 140 * 140));
+      return v;
+    };
+    return {
+      resize(w, h, isHero) { W = w; H = h; hero = isHero; cell = hero ? 13 : 8; cols = Math.ceil(w / cell); rows = Math.ceil(h / cell); vals = new Float32Array((cols + 1) * (rows + 1)); },
+      sample: (x, y) => field(x, y, lt, lm),
+      draw(ctx, w, h, t, m, age, still) {
+        lt = t; lm = m;
+        for (let j = 0; j <= rows; j++) for (let i = 0; i <= cols; i++) vals[j * (cols + 1) + i] = field(i * cell, j * cell, t, m);
+        if (hero) ctx.clearRect(0, 0, w, h); else { ctx.fillStyle = C.bg2; ctx.fillRect(0, 0, w, h); }
+        const e = hero && !still ? ease(clamp(age / 1.7)) : 1;
+        if (e < 1) { ctx.save(); ctx.beginPath(); ctx.arc(w * .3, h * .5, Math.hypot(w, h) * e, 0, 7); ctx.clip(); }
+        const idx = !hero && seed % 2 ? C.water : C.accent;
+        drawContours(ctx, vals, cols, rows, cell, levels, li => li % 5 === 0
+          ? { color: idx, alpha: hero ? .55 : .9, width: hero ? 1.3 : 1.4 } : { color: C.contour, alpha: hero ? .9 : .75, width: hero ? .75 : .8 });
+        if (e < 1) ctx.restore();
+      }
+    };
+  },
+
+  darkroom(seed) {
+    const n = N(seed); let W, H, hero, lw, lh, off, octx, img;
+    return {
+      resize(w, h, isHero) { W = w; H = h; hero = isHero; const k = hero ? 7 : 4; lw = Math.max(2, Math.ceil(w / k)); lh = Math.max(2, Math.ceil(h / k)); off = offscreen(lw, lh); octx = off.getContext("2d"); img = octx.createImageData(lw, lh); },
+      draw(ctx, w, h, t, m, age, still) {
+        const d = img.data, A = C.r.bg, B = C.r.accent, Am = C.r.water, F = C.r.veg, dev = hero && !still ? clamp(age / 3.4) : 1, kx = w / lw, ky = h / lh;
+        const cx = hero ? w * .72 : w * (.35 + (seed % 3) * .15), cy = hero ? h * .42 : h * .45, pr = Math.max(w, h) * (hero ? .26 : .34);
+        for (let y = 0; y < lh; y++) for (let x = 0; x < lw; x++) {
+          const px = x * kx, py = y * ky;
+          let v = n(px * .0035 + t * 1.4 + seed, py * .0035 - t * .5) * .85 + n(px * .009 - t * 2, py * .009 + t) * .3 + .6 * Math.exp(-((px - cx) ** 2 + (py - cy) ** 2) / (2 * pr * pr));
+          if (m.a) v += m.a * .85 * Math.exp(-((px - m.x) ** 2 + (py - m.y) ** 2) / (2 * 110 * 110));
+          let b = clamp(.3 + v * .78); b = clamp((b - .5) * (.4 + dev * 1.45) + .5 - (1 - dev) * .35);
+          const c = b < .55 ? mix(A, B, (b / .55) ** 2) : b < .86 ? mix(B, Am, (b - .55) / .31) : mix(Am, F, (b - .86) / .14);
+          const i = (y * lw + x) * 4; d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2]; d[i + 3] = 255;
+        }
+        octx.putImageData(img, 0, 0); ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high"; ctx.drawImage(off, 0, 0, w, h);
+        ctx.save(); ctx.globalAlpha = .16; ctx.fillStyle = ctx.createPattern(grainTile(), "repeat");
+        const ox = Math.random() * 160 | 0, oy = Math.random() * 160 | 0; ctx.translate(-ox, -oy); ctx.fillRect(0, 0, w + ox, h + oy); ctx.restore();
+        const g = ctx.createRadialGradient(w / 2, h / 2, Math.min(w, h) * .25, w / 2, h / 2, Math.hypot(w, h) * .62);
+        g.addColorStop(0, rgba(C.bg, 0)); g.addColorStop(1, rgba(C.bg, .9)); ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+        if (!hero) { ctx.font = `10px ${C.mono}`; ctx.fillStyle = rgba(C.water, .85); ctx.fillText(`▸ ${seed}A   SAFETY FILM`, 10, h - 10); }
+      }
+    };
+  },
+
+  blueprint(seed) {
+    let W, H, hero, shapes = [], cyc = -1;
+    const gen = k => {
+      const R = rng(seed * 31 + k * 7 + 1); shapes = [];
+      const x0 = hero ? W * .44 : W * .1, x1 = hero ? W * .96 : W * .9, y0 = hero ? H * .16 : H * .16, y1 = hero ? H * .84 : H * .84, cnt = hero ? 9 : 4;
+      for (let i = 0; i < cnt; i++) {
+        const ty = R(), cx = x0 + R() * (x1 - x0), cy = y0 + R() * (y1 - y0), s = (hero ? 60 : 24) + R() * (hero ? 140 : 50);
+        let sh;
+        if (ty < .4) { const ww = s * 1.4, hh = s * (.5 + R() * .6); sh = { k: "rect", x: cx - ww / 2, y: cy - hh / 2, w: ww, h: hh, len: 2 * (ww + hh), cx, cy }; }
+        else if (ty < .78) sh = { k: "circ", x: cx, y: cy, r: s / 2, len: Math.PI * s, cx, cy };
+        else { const a = R() * Math.PI; sh = { k: "line", x: cx - Math.cos(a) * s, y: cy - Math.sin(a) * s, x2: cx + Math.cos(a) * s, y2: cy + Math.sin(a) * s, len: 2 * s, cx, cy }; }
+        sh.st = i * .45; sh.dur = .9; shapes.push(sh);
+      }
+    };
+    const dim = (ctx, x1, y1, x2, y2, label) => {
+      ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+      const a = Math.atan2(y2 - y1, x2 - x1);
+      [[x1, y1, a], [x2, y2, a + Math.PI]].forEach(([x, y, b]) => { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.cos(b + .35) * 7, y + Math.sin(b + .35) * 7); ctx.lineTo(x + Math.cos(b - .35) * 7, y + Math.sin(b - .35) * 7); ctx.closePath(); ctx.fill(); });
+      ctx.save(); ctx.translate((x1 + x2) / 2, (y1 + y2) / 2); let r = a; if (r > Math.PI / 2 || r < -Math.PI / 2) r += Math.PI; ctx.rotate(r); ctx.fillText(label, 0, -5); ctx.restore();
+    };
+    return {
+      resize(w, h, isHero) { W = w; H = h; hero = isHero; cyc = -1; },
+      draw(ctx, w, h, t, m, age, still) {
+        const period = 12, T = hero && !still ? age % period : period - 1.4, k = hero && !still ? Math.floor(age / period) : 0;
+        if (k !== cyc) { cyc = k; gen(k); }
+        if (hero) ctx.clearRect(0, 0, w, h);
+        else {
+          ctx.fillStyle = C.bg; ctx.fillRect(0, 0, w, h); ctx.lineWidth = 1;
+          ctx.strokeStyle = C.contour; ctx.beginPath(); for (let x = 0; x < w; x += 12) { ctx.moveTo(x + .5, 0); ctx.lineTo(x + .5, h); } for (let y = 0; y < h; y += 12) { ctx.moveTo(0, y + .5); ctx.lineTo(w, y + .5); } ctx.stroke();
+          ctx.strokeStyle = C.line; ctx.beginPath(); for (let x = 0; x < w; x += 60) { ctx.moveTo(x + .5, 0); ctx.lineTo(x + .5, h); } for (let y = 0; y < h; y += 60) { ctx.moveTo(0, y + .5); ctx.lineTo(w, y + .5); } ctx.stroke();
+          ctx.strokeStyle = C.fg; ctx.globalAlpha = .6; ctx.strokeRect(w - 128.5, h - 40.5, 120, 32); ctx.beginPath(); ctx.moveTo(w - 128, h - 24.5); ctx.lineTo(w - 8, h - 24.5); ctx.stroke();
+          ctx.globalAlpha = .8; ctx.fillStyle = C.fg; ctx.font = `8px ${C.mono}`; ctx.fillText(`DWG A-${pad(seed, 2)}`, w - 122, h - 29); ctx.fillText("SCALE 1:20", w - 122, h - 13); ctx.globalAlpha = 1;
+        }
+        const fade = hero && !still && T > period - 1.2 ? Math.max(0, (period - T) / 1.2) : 1;
+        ctx.font = `${hero ? 10.5 : 8.5}px ${C.mono}`; ctx.textAlign = "center";
+        shapes.forEach(s => {
+          const p = clamp((T - s.st) / s.dur); if (p <= 0) return;
+          ctx.globalAlpha = fade * .92; ctx.strokeStyle = C.fg; ctx.lineWidth = hero ? 1.3 : 1;
+          ctx.setLineDash([s.len * p, s.len + 1]); ctx.beginPath();
+          if (s.k === "rect") ctx.rect(s.x, s.y, s.w, s.h); else if (s.k === "circ") ctx.arc(s.x, s.y, s.r, -Math.PI / 2, Math.PI * 1.5); else { ctx.moveTo(s.x, s.y); ctx.lineTo(s.x2, s.y2); }
+          ctx.stroke(); ctx.setLineDash([]);
+          if (p >= 1) {
+            const q = clamp((T - s.st - s.dur) / .5); ctx.globalAlpha = fade * q * .95; ctx.strokeStyle = C.water; ctx.fillStyle = C.water; ctx.lineWidth = .8;
+            if (s.k === "rect") { ctx.beginPath(); ctx.moveTo(s.x, s.y - 4); ctx.lineTo(s.x, s.y - 20); ctx.moveTo(s.x + s.w, s.y - 4); ctx.lineTo(s.x + s.w, s.y - 20); ctx.stroke(); dim(ctx, s.x, s.y - 14, s.x + s.w, s.y - 14, (s.w * 2).toFixed(0)); }
+            else if (s.k === "circ") { ctx.beginPath(); ctx.moveTo(s.x - 7, s.y); ctx.lineTo(s.x + 7, s.y); ctx.moveTo(s.x, s.y - 7); ctx.lineTo(s.x, s.y + 7); ctx.stroke(); dim(ctx, s.x - s.r * .707, s.y + s.r * .707, s.x + s.r * .707, s.y - s.r * .707, "Ø " + (s.r * 4).toFixed(0)); }
+            else { const nx = -(s.y2 - s.y) / s.len * 2 * 14, ny = (s.x2 - s.x) / s.len * 2 * 14; dim(ctx, s.x + nx, s.y + ny, s.x2 + nx, s.y2 + ny, (s.len * 2).toFixed(0)); }
+          }
+        });
+        ctx.globalAlpha = 1;
+        if (hero && m.a > .05 && shapes.length) {
+          let best = shapes[0], bd = 1e9; shapes.forEach(s => { const d = Math.hypot(s.cx - m.x, s.cy - m.y); if (d < bd) { bd = d; best = s; } });
+          ctx.globalAlpha = m.a * .9; ctx.strokeStyle = C.accent; ctx.fillStyle = C.accent; ctx.lineWidth = .9; ctx.setLineDash([4, 5]);
+          ctx.beginPath(); ctx.arc(best.cx, best.cy, 10, 0, 7); ctx.stroke(); ctx.setLineDash([]);
+          dim(ctx, m.x, m.y, best.cx, best.cy, "R " + (bd * 2).toFixed(1)); ctx.globalAlpha = 1;
+        }
+        ctx.textAlign = "start";
+      }
+    };
+  },
+
+  observatory(seed) {
+    let W, H, hero, stars = [], P, maxR;
+    return {
+      resize(w, h, isHero) {
+        W = w; H = h; hero = isHero; const R = rng(seed);
+        P = hero ? [w * .82, h * .08] : [w * (.25 + R() * .5), h * (.25 + R() * .5)];
+        maxR = Math.hypot(Math.max(P[0], w - P[0]), Math.max(P[1], h - P[1]));
+        const cnt = Math.round(w * h / (hero ? 2400 : 700));
+        stars = [...Array(cnt)].map((_, i) => ({ r: Math.sqrt(R()) * maxR, a: R() * Math.PI * 2, m: Math.pow(R(), 3), c: R() < .12 ? "water" : R() < .2 ? "accent" : R() < .25 ? "veg" : "fg", id: 1000 + (i * 7919) % 9000 }));
+      },
+      draw(ctx, w, h, t, m, age, still) {
+        if (hero) ctx.clearRect(0, 0, w, h); else { ctx.fillStyle = C.bg; ctx.fillRect(0, 0, w, h); }
+        ctx.strokeStyle = C.contour; ctx.lineWidth = .7; ctx.globalAlpha = .7; ctx.beginPath();
+        for (let r = hero ? 140 : 40; r < maxR; r += hero ? 140 : 40) { ctx.moveTo(P[0] + r, P[1]); ctx.arc(P[0], P[1], r, 0, Math.PI * 2); }
+        for (let a = 0; a < Math.PI * 2; a += Math.PI / 6) { ctx.moveTo(P[0], P[1]); ctx.lineTo(P[0] + Math.cos(a) * maxR, P[1] + Math.sin(a) * maxR); }
+        ctx.stroke();
+        const run = hero && !still ? age : 30, rot = run * .012 + seed + t * 2, L = hero ? Math.min(.2, run * .012) : .22;
+        const heads = [];
+        stars.forEach(s => {
+          const a = s.a + rot; ctx.strokeStyle = C[s.c]; ctx.globalAlpha = .1 + s.m * .75; ctx.lineWidth = .5 + s.m * 1.7;
+          ctx.beginPath(); ctx.arc(P[0], P[1], s.r, a - L - .0005, a); ctx.stroke();
+          const x = P[0] + Math.cos(a) * s.r, y = P[1] + Math.sin(a) * s.r; if (x > -10 && y > -10 && x < w + 10 && y < h + 10) heads.push([x, y, s]);
+        });
+        heads.forEach(([x, y, s]) => { if (s.m < .3) return; ctx.globalAlpha = .9; ctx.fillStyle = C[s.c]; ctx.beginPath(); ctx.arc(x, y, 1 + s.m * 1.6, 0, 7); ctx.fill(); ctx.globalAlpha = .18; ctx.beginPath(); ctx.arc(x, y, 4 + s.m * 6, 0, 7); ctx.fill(); });
+        const link = (pts, a) => {
+          if (pts.length < 2) return; const left = pts.slice(1), chain = [pts[0]];
+          while (left.length) { const l = chain[chain.length - 1]; let bi = 0, bd = 1e9; left.forEach((p, i) => { const d = Math.hypot(p[0] - l[0], p[1] - l[1]); if (d < bd) { bd = d; bi = i; } }); chain.push(left.splice(bi, 1)[0]); }
+          ctx.globalAlpha = a; ctx.strokeStyle = C.accent; ctx.lineWidth = 1; ctx.beginPath(); chain.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.stroke();
+          chain.forEach(p => { ctx.beginPath(); ctx.arc(p[0], p[1], 2.4, 0, 7); ctx.fillStyle = C.accent; ctx.fill(); });
+        };
+        if (hero && m.a > .05) {
+          const R = 110, inside = heads.filter(([x, y]) => Math.hypot(x - m.x, y - m.y) < R).sort((a, b) => b[2].m - a[2].m).slice(0, 7);
+          link(inside, m.a * .9);
+          if (inside[0]) { ctx.globalAlpha = m.a; ctx.fillStyle = C.accent; ctx.font = `10px ${C.mono}`; ctx.fillText(`HD ${inside[0][2].id}`, inside[0][0] + 8, inside[0][1] - 8); }
+        } else if (!hero) {
+          const pick = heads.filter(([x, y]) => x > w * .15 && x < w * .85 && y > h * .15 && y < h * .85).sort((a, b) => b[2].m - a[2].m).slice(0, 6);
+          link(pick, .85);
+        }
+        ctx.globalAlpha = 1;
+      }
+    };
+  },
+
   terminal(seed) {
     const n = N(seed), ramp = " .,:;-=+*#%@"; let W, H, hero, fs;
     return {
@@ -729,30 +1175,267 @@ const SCENES = {
         ctx.textBaseline = "alphabetic";
       }
     };
-  }
+  },
 
+  swiss(seed) {
+    let W, H, hero, R0;
+    return {
+      resize(w, h, isHero) { W = w; H = h; hero = isHero; const R = rng(seed); R0 = [R(), R(), R(), R(), R()]; },
+      draw(ctx, w, h, t, m, age, still) {
+        if (hero) ctx.clearRect(0, 0, w, h); else { ctx.fillStyle = C.panel; ctx.fillRect(0, 0, w, h); }
+        const e = hero && !still ? ease(clamp(age / 1.2)) : 1, s = Math.min(w, h);
+        const ox = m.a ? (m.x - w / 2) * .04 * m.a : 0, oy = m.a ? (m.y - h / 2) * .04 * m.a : 0;
+        ctx.fillStyle = C.accent; ctx.beginPath();
+        ctx.arc((hero ? w * .74 : w * (.35 + R0[0] * .35)) + ox, (hero ? h * .44 : h * (.38 + R0[1] * .2)) + oy, s * (hero ? .3 : .3) * e, 0, 7); ctx.fill();
+        ctx.save(); ctx.translate(hero ? w * .63 : w * .5, hero ? h * .62 : h * .58); ctx.rotate(-.5 + t * 4 + R0[2] * 3);
+        ctx.fillStyle = C.fg; ctx.fillRect(-s * .46 * e, -s * .035, s * .92 * e, s * .07); ctx.restore();
+        ctx.fillStyle = C.water; ctx.fillRect((hero ? w * .87 : w * (.62 + R0[3] * .2)) + Math.sin(t * 12 + R0[4] * 6) * s * .05, hero ? h * .13 : h * .1, s * .08, s * .44 * e);
+        ctx.fillStyle = C.veg; ctx.fillRect(hero ? w * .55 : w * (.08 + R0[4] * .2), hero ? h * .2 : h * .7, s * .06 * e, s * .06 * e);
+        const gx0 = hero ? w * .46 : w * .08, gx1 = w * .95, gy0 = h * .12, gy1 = h * .88, nx = hero ? 14 : 8, ny = hero ? 9 : 5, L = hero ? 7 : 4;
+        ctx.strokeStyle = C.fg; ctx.lineWidth = hero ? 2 : 1.4; ctx.beginPath();
+        for (let i = 0; i < nx; i++) for (let j = 0; j < ny; j++) {
+          const x = gx0 + (gx1 - gx0) * i / (nx - 1), y = gy0 + (gy1 - gy0) * j / (ny - 1);
+          const a = m.a > .05 ? Math.atan2(m.y - y, m.x - x) : t * 6 + (i + j) * .4 + seed;
+          ctx.moveTo(x - Math.cos(a) * L * e, y - Math.sin(a) * L * e); ctx.lineTo(x + Math.cos(a) * L * e, y + Math.sin(a) * L * e);
+        }
+        ctx.stroke();
+      }
+    };
+  },
+
+  riso(seed) {
+    const n1 = N(seed), n2 = N(seed + 17); let W, H, hero;
+    return {
+      resize(w, h, isHero) { W = w; H = h; hero = isHero; },
+      draw(ctx, w, h, t, m, age, still) {
+        ctx.globalCompositeOperation = "source-over";
+        if (hero) ctx.clearRect(0, 0, w, h); else { ctx.fillStyle = C.bg; ctx.fillRect(0, 0, w, h); }
+        const cell = hero ? 15 : 8, e = hero && !still ? ease(clamp(age / 1.3)) : 1, mis = (hero ? 3 : 1.6) + (m.a ? (m.x / w - .5) * 16 * m.a : 0);
+        const cx0 = hero ? w * .75 : w * (.4 + (seed % 3) * .1);
+        const layer = (ang, nz, col, dx, dy, ph) => {
+          ctx.fillStyle = col; ctx.beginPath();
+          const ca = Math.cos(ang), sa = Math.sin(ang), D = Math.hypot(w, h) / 2 + cell, cx = w / 2, cy = h / 2;
+          for (let u = -D; u < D; u += cell) for (let v = -D; v < D; v += cell) {
+            const x = cx + u * ca - v * sa + dx, y = cy + u * sa + v * ca + dy;
+            if (x < -cell || y < -cell || x > w + cell || y > h + cell) continue;
+            let val = nz(x * .0035 + ph + t * 1.5, y * .0035 - t * .6) * .9 + .5 * Math.exp(-((x - cx0) ** 2 + (y - h * .45) ** 2) / (2 * (Math.max(w, h) * .22) ** 2)) - .1;
+            if (m.a) val += m.a * .8 * Math.exp(-((x - m.x) ** 2 + (y - m.y) ** 2) / (2 * 120 * 120));
+            if (hero) val -= clamp(1 - x / (w * .62)) * .75;   // keep the text side light
+            const r = Math.pow(clamp(val * .8 + .35), 1.3) * cell * .66 * e; if (r < .5) continue;
+            ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, 6.2832);
+          }
+          ctx.fill();
+        };
+        ctx.globalCompositeOperation = "multiply";
+        layer(.26, n1, C.accent, 0, 0, 0); layer(1.31, n2, C.water, mis, mis * .6, 5);
+        ctx.globalCompositeOperation = "source-over";
+      }
+    };
+  },
+
+  liquid(seed) {
+    let W, H, hero, lw, lh, off, octx, img, balls;
+    return {
+      resize(w, h, isHero) {
+        W = w; H = h; hero = isHero; const R = rng(seed), cnt = hero ? 8 : 5;
+        balls = [...Array(cnt)].map(() => ({ cx: hero ? .48 + R() * .46 : .2 + R() * .6, cy: .2 + R() * .6, ax: .06 + R() * .16, ay: .08 + R() * .18, fx: .6 + R() * 1.1, fy: .5 + R() * 1.1, ph: R() * 6.28, r: (hero ? .07 : .12) + R() * (hero ? .08 : .08) }));
+        const k = hero ? 6 : 4; lw = Math.max(2, Math.ceil(w / k)); lh = Math.max(2, Math.ceil(h / k)); off = offscreen(lw, lh); octx = off.getContext("2d"); img = octx.createImageData(lw, lh);
+      },
+      draw(ctx, w, h, t, m, age, still) {
+        const e = hero && !still ? ease(clamp(age / 1.6)) : 1, s = Math.min(w, h), T = t * 40 + seed;
+        const B = balls.map(b => [(b.cx + b.ax * Math.sin(T * b.fx + b.ph)) * w, (b.cy + b.ay * Math.cos(T * b.fy + b.ph * 1.3)) * h, (b.r * s * e) ** 2]);
+        if (m.a > .02) B.push([m.x, m.y, (s * .09 * m.a) ** 2]);
+        const d = img.data, A = C.r.accent, Bc = C.r.water, Y = C.r.veg, F = C.r.fg, kx = w / lw, ky = h / lh;
+        for (let y = 0; y < lh; y++) for (let x = 0; x < lw; x++) {
+          const px = x * kx, py = y * ky; let f = 0;
+          for (let i = 0; i < B.length; i++) { const dx = px - B[i][0], dy = py - B[i][1]; f += B[i][2] / (dx * dx + dy * dy + 1); }
+          const i4 = (y * lw + x) * 4;
+          if (f < .8) { d[i4 + 3] = 0; continue; }
+          const a = clamp((f - .85) / .2), g = clamp(py / h * .95 + (f - 1) * .04);
+          let c = g < .5 ? mix(A, Bc, g * 2) : mix(Bc, Y, (g - .5) * 2);
+          c = mix(c, F, clamp(1 - (f - 1) * 1.8) * .35);
+          d[i4] = c[0]; d[i4 + 1] = c[1]; d[i4 + 2] = c[2]; d[i4 + 3] = a * 255;
+        }
+        octx.putImageData(img, 0, 0);
+        if (hero) ctx.clearRect(0, 0, w, h); else { ctx.fillStyle = C.bg2; ctx.fillRect(0, 0, w, h); }
+        ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high"; ctx.drawImage(off, 0, 0, w, h);
+      }
+    };
+  },
+
+  signal(seed) {
+    let W, H, hero, trail, tctx;
+    const traces = (c, w, h, ph, m) => {
+      const f = 1.2 + (hero && m.a ? m.x / w * 2.6 : (seed % 5) * .3), A = h * .12 * (hero && m.a ? .4 + (1 - m.y / h) * 1.4 : 1), st = hero ? 3 : 2;
+      c.lineWidth = hero ? 2 : 1.4; c.shadowBlur = hero ? 10 : 4;
+      c.strokeStyle = c.shadowColor = C.accent; c.beginPath();
+      for (let x = 0; x <= w; x += st) { const p = x / w * Math.PI * 4 * f - ph * 6; const y = h * .36 + A * (Math.sin(p) + .25 * Math.sin(p * 3 + ph)); x ? c.lineTo(x, y) : c.moveTo(x, y); }
+      c.stroke();
+      c.strokeStyle = c.shadowColor = C.water; c.beginPath();
+      for (let x = 0; x <= w; x += st) { const p = x / w * Math.PI * 2 * f - ph * 3; let s = 0; for (let k = 1; k <= 9; k += 2) s += Math.sin(k * p) / k; const y = h * .68 + h * .065 * s * 1.27; x ? c.lineTo(x, y) : c.moveTo(x, y); }
+      c.stroke();
+      const cx = hero ? w * .84 : w * .72, cy = h * .5, r = Math.min(w, h) * (hero ? .17 : .22);
+      c.strokeStyle = c.shadowColor = C.veg; c.beginPath();
+      for (let τ = 0; τ <= Math.PI * 2 + .02; τ += .02) { const x = cx + r * Math.sin(3 * τ + ph * 2), y = cy + r * Math.sin(2 * τ); τ ? c.lineTo(x, y) : c.moveTo(x, y); }
+      c.stroke(); c.shadowBlur = 0;
+    };
+    return {
+      resize(w, h, isHero) { W = w; H = h; hero = isHero; trail = null; },
+      draw(ctx, w, h, t, m, age, still) {
+        const dpr = ctx.getTransform().a;
+        if (hero) ctx.clearRect(0, 0, w, h); else { ctx.fillStyle = C.bg; ctx.fillRect(0, 0, w, h); }
+        const div = hero ? 80 : 32; ctx.strokeStyle = C.contour; ctx.lineWidth = 1; ctx.beginPath();
+        for (let x = (w / 2) % div; x < w; x += div) { ctx.moveTo(x + .5, 0); ctx.lineTo(x + .5, h); }
+        for (let y = (h / 2) % div; y < h; y += div) { ctx.moveTo(0, y + .5); ctx.lineTo(w, y + .5); }
+        ctx.stroke(); ctx.strokeStyle = C.line; ctx.beginPath(); ctx.moveTo(0, h / 2 + .5); ctx.lineTo(w, h / 2 + .5); ctx.moveTo(w / 2 + .5, 0); ctx.lineTo(w / 2 + .5, h);
+        for (let x = (w / 2) % (div / 5); x < w; x += div / 5) { ctx.moveTo(x, h / 2 - 3); ctx.lineTo(x, h / 2 + 3); }
+        ctx.stroke();
+        const ph = t * 30 + seed;
+        if (hero && !still) {
+          if (!trail || trail.width !== ctx.canvas.width || trail.height !== ctx.canvas.height) { trail = offscreen(ctx.canvas.width, ctx.canvas.height); tctx = trail.getContext("2d"); }
+          tctx.setTransform(1, 0, 0, 1, 0, 0); tctx.globalCompositeOperation = "destination-out"; tctx.fillStyle = "rgba(0,0,0,.3)"; tctx.fillRect(0, 0, trail.width, trail.height);
+          tctx.globalCompositeOperation = "source-over"; tctx.setTransform(dpr, 0, 0, dpr, 0, 0); traces(tctx, w, h, ph, m);
+          ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.drawImage(trail, 0, 0); ctx.restore();
+        } else traces(ctx, w, h, ph, m);
+        ctx.font = `${hero ? 11 : 9}px ${C.mono}`;
+        [[C.accent, "CH1  2.00 V"], [C.water, "CH2  500 mV"], [C.veg, "XY"]].forEach(([c, l], i) => { ctx.fillStyle = c; ctx.fillText(l, hero ? w * .46 + i * 110 : 8 + i * 74, hero ? h - 24 : h - 8); });
+        if (hero && m.a > .05) { ctx.globalAlpha = m.a * .6; ctx.strokeStyle = C.accent; ctx.setLineDash([5, 5]); ctx.beginPath(); ctx.moveTo(0, m.y); ctx.lineTo(w, m.y); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = C.accent; ctx.fillText("T ▸", w - 34, m.y - 5); ctx.globalAlpha = 1; }
+      }
+    };
+  },
+
+  herbarium(seed) {
+    let W, H, hero, plants;
+    const build = (R, depth, len, ang) => ({ len, ang, depth,
+      kids: depth > 0 ? [...Array(1 + (R() < .65 ? 1 : 0) + (R() < .3 ? 1 : 0))].map((_, i) => build(R, depth - 1, len * (.66 + R() * .16), i === 0 ? (R() - .5) * .35 : (R() < .5 ? -1 : 1) * (.35 + R() * .5))) : [],
+      leaf: depth <= 1 || R() < .3, la: (R() < .5 ? -1 : 1) * (.5 + R() * .6), ls: .5 + R() * .6 });
+    const leaf = (ctx, x, y, a, L) => {
+      ctx.save(); ctx.translate(x, y); ctx.rotate(a); ctx.beginPath(); ctx.moveTo(0, 0); ctx.quadraticCurveTo(L * .5, -L * .32, L, 0); ctx.quadraticCurveTo(L * .5, L * .32, 0, 0);
+      ctx.globalAlpha = .2; ctx.fillStyle = C.veg; ctx.fill(); ctx.globalAlpha = .85; ctx.strokeStyle = C.veg; ctx.lineWidth = .9; ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(L * .92, 0); ctx.globalAlpha = .55; ctx.stroke(); ctx.restore();
+    };
+    return {
+      resize(w, h, isHero) {
+        W = w; H = h; hero = isHero; const R = rng(seed);
+        plants = hero ? [.56, .69, .82, .94].map(fx => ({ x: w * fx + (R() - .5) * 40, y: h + 6, tree: build(R, 5, h * (.12 + R() * .06), (R() - .5) * .2) }))
+          : [{ x: w * .45, y: h * .95, tree: build(R, 5, h * .19, (R() - .5) * .2) }];
+      },
+      draw(ctx, w, h, t, m, age, still) {
+        if (hero) ctx.clearRect(0, 0, w, h); else { ctx.fillStyle = C.panel; ctx.fillRect(0, 0, w, h); }
+        const g = hero && !still ? clamp(age / 5) : 1, wind = m.a ? (m.x / w - .5) * .5 * m.a : 0, sway = hero && !still ? age : t * 30;
+        ctx.lineCap = "round";
+        const draw = (nd, x, y, ang, lvl) => {
+          const grow = clamp(g * 6 - lvl); if (grow <= 0) return;
+          const a = ang + nd.ang + Math.sin(sway * .8 + lvl * .7 + x * .01) * .03 * (lvl + 1) + wind * (lvl + 1) * .12, L = nd.len * grow;
+          const x2 = x + Math.cos(a) * L, y2 = y + Math.sin(a) * L;
+          ctx.strokeStyle = C.fg; ctx.globalAlpha = .78; ctx.lineWidth = Math.max(.6, (nd.depth + 1) * (hero ? .75 : .5));
+          ctx.beginPath(); ctx.moveTo(x, y); ctx.quadraticCurveTo((x + x2) / 2 + Math.cos(a + 1.57) * L * .08, (y + y2) / 2 + Math.sin(a + 1.57) * L * .08, x2, y2); ctx.stroke();
+          if (nd.leaf && grow >= 1) leaf(ctx, x2, y2, a + nd.la, nd.len * nd.ls * .9 * clamp(g * 6 - lvl - 1));
+          nd.kids.forEach(k => draw(k, x2, y2, a, lvl + 1));
+        };
+        plants.forEach(p => draw(p.tree, p.x, p.y, -Math.PI / 2, 0));
+        ctx.globalAlpha = 1; ctx.font = `${hero ? 11 : 9}px ${C.mono}`; ctx.fillStyle = C.muted;
+        if (hero) plants.forEach((p, i) => ctx.fillText(`Fig. ${i + 1}`, p.x + 8, h - 18));
+        else {
+          const bw = Math.min(150, w * .42), bx = w - bw - 10, by = 10;
+          ctx.fillStyle = C.bg; ctx.fillRect(bx, by, bw, 34); ctx.strokeStyle = C.line; ctx.lineWidth = 1; ctx.strokeRect(bx + .5, by + .5, bw, 34);
+          ctx.fillStyle = C.accent; ctx.fillText(`No. ${pad(seed * 37 % 1000, 4)}`, bx + 8, by + 14); ctx.fillStyle = C.muted; ctx.fillText("Herb. sp. · coll. A.W.", bx + 8, by + 27);
+        }
+      }
+    };
+  },
+
+  pixel(seed) {
+    let W, H, hero, cell, cols, rows, g, ag, acc = 0, gen = 0, pop = 0; const R = rng(seed);
+    const reseed = () => { for (let i = 0; i < g.length; i++) g[i] = R() < .22 ? 1 : 0; ag.fill(0); };
+    const step = () => {
+      const nx = new Uint8Array(cols * rows); pop = 0;
+      for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+        let c = 0;
+        for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if (dx || dy) c += g[((y + dy + rows) % rows) * cols + (x + dx + cols) % cols];
+        const i = y * cols + x, alive = c === 3 || (c === 2 && g[i]) ? 1 : 0;
+        nx[i] = alive; ag[i] = alive ? Math.min(255, ag[i] + 1) : 0; pop += alive;
+      }
+      g = nx; gen++; if (pop < cols * rows * .03) reseed();
+    };
+    return {
+      stats: () => ({ gen, pop }),
+      resize(w, h, isHero) { W = w; H = h; hero = isHero; cell = hero ? 10 : 7; cols = Math.max(4, Math.ceil(w / cell)); rows = Math.max(4, Math.ceil(h / cell)); g = new Uint8Array(cols * rows); ag = new Uint8Array(cols * rows); reseed(); if (!hero) for (let i = 0; i < 18; i++) step(); },
+      draw(ctx, w, h, t, m, age, still, dt) {
+        if (hero && !still) {
+          acc += dt || 16; while (acc > 110) { acc -= 110; step(); }
+          if (m.a > .5) { const cx = Math.floor(m.x / cell), cy = Math.floor(m.y / cell); for (let dy = -2; dy <= 2; dy++) for (let dx = -2; dx <= 2; dx++) if (R() < .45) { const x = (cx + dx + cols) % cols, y = (cy + dy + rows) % rows; g[y * cols + x] = 1; } }
+        }
+        if (hero) ctx.clearRect(0, 0, w, h); else { ctx.fillStyle = C.bg2; ctx.fillRect(0, 0, w, h); }
+        [[C.accent, 0, 2], [C.water, 2, 8], [C.veg, 8, 999]].forEach(([col, lo, hi]) => {
+          ctx.fillStyle = col; ctx.globalAlpha = hero ? .5 : .35; ctx.beginPath();
+          for (let i = 0; i < g.length; i++) if (g[i] && ag[i] >= lo && ag[i] < hi) ctx.rect((i % cols) * cell + 1, Math.floor(i / cols) * cell + 1, cell - 2, cell - 2);
+          ctx.fill();
+        });
+        ctx.globalAlpha = 1;
+        if (!hero) {
+          const S = rng(seed * 13 + 5), px = Math.max(5, Math.floor(Math.min(w, h) * .075)), gw = 7, gh = 7, ox = Math.floor((w - gw * px) / 2), oy = Math.floor((h - gh * px) / 2);
+          const cells = []; for (let y = 0; y < gh; y++) for (let x = 0; x < 4; x++) if (S() < .52) { cells.push([x, y]); cells.push([gw - 1 - x, y]); }
+          ctx.fillStyle = C.bg; ctx.fillRect(ox - px, oy - px, (gw + 2) * px, (gh + 2) * px);
+          ctx.fillStyle = C.line; cells.forEach(([x, y]) => ctx.fillRect(ox + x * px + px * .25, oy + y * px + px * .25, px, px));
+          ctx.fillStyle = seed % 2 ? C.accent : C.water; cells.forEach(([x, y]) => ctx.fillRect(ox + x * px, oy + y * px, px, px));
+        }
+      }
+    };
+  }
 };
 
 /* =====================================================================
-   DESIGN: labels, units and readout for the terminal world, plus the
-   phosphor colours the dock offers (their tokens live in the CSS).
+   DESIGNS: labels, fonts and the units each world measures in.
    ===================================================================== */
 const DESIGNS = [
-  { id: "terminal", label: "Terminal", blurb: "Amber CRT with an ASCII field and scanlines.", sw: ["#120C04", "#FFB547", "#FF8F3F"], face: '"VT323",monospace', verb: "Compiled", fps: 24,
+  { id: "survey", label: "Survey", blurb: "Live contour map that rises under your cursor.", sw: ["#0C1113", "#E39A5F", "#76AFCF"], face: '"Anybody",sans-serif', verb: "Surveyed",
+    unit: p => `${pad(p * 2400)} m`, legend: [['<i class="sw"></i>Contour', "Interval <b>20 m</b>"], ['<i class="sw idx"></i>Index', "Every <b>100 m</b>"]],
+    readout: (m, w, h, s) => `E ${pad(m.x)} · N ${pad(h - m.y)} · ${pad((s.sample(m.x, m.y) + 1) * 600)} m` },
+  { id: "darkroom", label: "Darkroom", blurb: "A print developing under red safelight.", sw: ["#0D0807", "#E8452C", "#E9A23E"], face: '"Bodoni Moda",serif', verb: "Printed", fps: 30,
+    fonts: "Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Hanken+Grotesk:wght@400..700&family=DM+Mono:wght@400;500",
+    unit: p => ["f/1.4", "f/2", "f/2.8", "f/4", "f/5.6", "f/8", "f/11", "f/16", "f/22"][Math.round(clamp(p) * 8)], legend: [["Paper", "Grade <b>3</b>"], ["Developer", "<b>20 °C</b>"]],
+    readout: (m, w, h, s, age) => `Dodge ${pad(m.a * 100, 3)}% · ${age.toFixed(1)} s` },
+  { id: "blueprint", label: "Blueprint", blurb: "Technical drawings that draft themselves.", sw: ["#123E6B", "#FF8A63", "#A6D8FF"], face: '"Big Shoulders Display",sans-serif', verb: "Drawn",
+    fonts: "Big+Shoulders+Display:wght@300..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500",
+    unit: p => `Y ${pad(p * 4200)} mm`, legend: [["Scale", "<b>1 : 20</b>"], ["Units", "<b>mm</b>"]],
+    readout: (m, w, h) => `X ${pad(m.x * 2)} · Y ${pad((h - m.y) * 2)} mm` },
+  { id: "observatory", label: "Observatory", blurb: "Star trails and constellations you can aim at.", sw: ["#060A18", "#E9C77B", "#8EB6FF"], face: '"Italiana",serif', verb: "Observed",
+    fonts: "Italiana&family=Albert+Sans:wght@300..700&family=Azeret+Mono:wght@300..500",
+    unit: p => { const d = Math.round(90 - p * 180); return `Dec ${d >= 0 ? "+" : "−"}${pad(Math.abs(d), 2)}°`; }, legend: [["Epoch", "<b>J2000</b>"], ["Field", "<b>40°</b>"]],
+    readout: (m, w, h) => { const ra = m.x / w * 24, d = Math.round(90 - m.y / h * 180); return `RA ${pad(Math.floor(ra), 2)}h ${pad(Math.floor(ra % 1 * 60), 2)}m · Dec ${d >= 0 ? "+" : "−"}${pad(Math.abs(d), 2)}°`; } },
+  { id: "terminal", label: "Terminal", blurb: "CRT with an ASCII field, scanlines and eight phosphor colours.", sw: ["#120C04", "#FFB547", "#FF8F3F"], face: '"VT323",monospace', verb: "Compiled", fps: 24,
     fonts: "VT323&family=IBM+Plex+Mono:wght@400;500;600",
     unit: p => "0x" + Math.round(clamp(p) * 65535).toString(16).toUpperCase().padStart(4, "0"), legend: [["Baud", "<b>9600</b>"], ["Mode", "<b>ANSI</b>"]],
-    readout: (m) => `[${pad(m.x / 9, 3)},${pad(m.y / 15, 3)}] 0x${Math.round(m.x * 31 + m.y).toString(16).toUpperCase().padStart(5, "0")}` }
+    readout: (m) => `[${pad(m.x / 9, 3)},${pad(m.y / 15, 3)}] 0x${Math.round(m.x * 31 + m.y).toString(16).toUpperCase().padStart(5, "0")}` },
+  { id: "swiss", label: "Swiss", blurb: "Hard grid, primary shapes, needles that follow you.", sw: ["#F3F3F1", "#E10A1F", "#1747F5"], face: '"Archivo",sans-serif', verb: "Set",
+    fonts: "Archivo:wdth,wght@62..125,100..900&family=Red+Hat+Mono:wght@400;500",
+    unit: p => `${pad(p * 100, 2)}%`, legend: [["Grid", "<b>12 col</b>"], ["Baseline", "<b>8 pt</b>"]],
+    readout: (m, w, h) => `x ${(m.x / w).toFixed(2)} · y ${(m.y / h).toFixed(2)}` },
+  { id: "riso", label: "Riso", blurb: "Two-ink halftone zine, slightly off register.", sw: ["#F5F2EF", "#FF4FA0", "#2D63D8"], face: '"Bagel Fat One",sans-serif', verb: "Printed", fps: 30,
+    fonts: "Bagel+Fat+One&family=Work+Sans:wght@400..700&family=Courier+Prime:wght@400;700",
+    unit: p => `pg. ${pad(1 + Math.round(p * 11), 2)}/12`, legend: [["Inks", "<b>Pink + Blue</b>"], ["Screen", "<b>85 lpi</b>"]],
+    readout: (m, w) => `Offset +${(3 + (m.x / w - .5) * 16 * m.a).toFixed(1)} px` },
+  { id: "liquid", label: "Molten", blurb: "Liquid metaballs behind frosted glass.", sw: ["#0A090D", "#FF5A36", "#FFD25C"], face: '"Unbounded",sans-serif', verb: "Cast",
+    fonts: "Unbounded:wght@300..900&family=Sora:wght@300..600&family=Fragment+Mono",
+    unit: p => `${pad(20 + p * 1180)} °C`, legend: [["Blobs", "<b>8 + you</b>"], ["Melt", "<b>1100 °C</b>"]],
+    readout: (m, w, h) => `${pad(1180 - m.y / h * 300)} °C` },
+  { id: "signal", label: "Signal", blurb: "Oscilloscope traces you can tune with the cursor.", sw: ["#0E1112", "#3FDFFF", "#FF5FA8"], face: '"Michroma",sans-serif', verb: "Measured",
+    fonts: "Michroma&family=Barlow:wght@400;500;600&family=Share+Tech+Mono",
+    unit: p => `${(p * 20).toFixed(2)} kHz`, legend: [["Timebase", "<b>50 µs/div</b>"], ["Trigger", "<b>CH1 ↑</b>"]],
+    readout: (m, w, h) => `${(1.2 + m.x / w * 2.6).toFixed(2)} kHz · ${((1 - m.y / h) * 5).toFixed(2)} V` },
+  { id: "herbarium", label: "Herbarium", blurb: "Pressed plants that grow and lean in the wind.", sw: ["#E3E8DF", "#4F7D3A", "#9A3D2A"], face: '"Young Serif",serif', verb: "Collected",
+    fonts: "Young+Serif&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=Cutive+Mono",
+    unit: p => `Plate ${ROMAN[Math.round(clamp(p) * 6)]}`, legend: [["Specimens", "<b>4</b>"], ["Pressed", "<b>Plate I</b>"]],
+    readout: (m, w) => `Wind ${Math.abs((m.x / w - .5) * 24).toFixed(1)} km/h ${m.x > w / 2 ? "E" : "W"}` },
+  { id: "pixel", label: "Pixel", blurb: "A living pixel grid you can paint into.", sw: ["#10182A", "#FFCC3D", "#9CE36A"], face: '"Silkscreen",monospace', verb: "Saved",
+    fonts: "Silkscreen:wght@400;700&family=Rubik:wght@400..600&family=Pixelify+Sans:wght@400..600",
+    unit: p => `LVL ${1 + Math.min(6, Math.floor(p * 7))}`, legend: [["Rule", "<b>B3/S23</b>"], ["Cell", "<b>10 px</b>"]],
+    readout: (m, w, h, s) => { const st = s.stats(); return `GEN ${pad(st.gen)} · POP ${pad(st.pop)}`; } }
 ];
-const PHOSPHORS = [
-  { id: "amber", label: "Amber", c: "#FFB547", k: "#120C04" }, { id: "green", label: "Green", c: "#4CFF8F", k: "#04110A" },
-  { id: "red", label: "Red", c: "#FF5A5F", k: "#140506" },     { id: "blue", label: "Blue", c: "#5AA9FF", k: "#040A16" },
-  { id: "cyan", label: "Cyan", c: "#3FF2E6", k: "#031212" },   { id: "violet", label: "Violet", c: "#B98CFF", k: "#0D0716" },
-  { id: "pink", label: "Pink", c: "#FF6EC7", k: "#14060F" },   { id: "gray", label: "Gray", c: "#D8D8D8", k: "#0C0C0C" }
-];
-let PH = PHOSPHORS[0];
 let D = DESIGNS[0];
 
-const loadedFonts = new Set(["terminal"]);
+const loadedFonts = new Set(["survey"]);
 function loadFonts(d) {
   if (!d.fonts || loadedFonts.has(d.id)) return; loadedFonts.add(d.id);
   const l = document.createElement("link"); l.rel = "stylesheet"; l.href = `https://fonts.googleapis.com/css2?family=${d.fonts}&display=swap`;
@@ -945,19 +1628,52 @@ async function github() {
   } catch (e) { /* keep the snapshot */ }
 }
 
-/* ---------- phosphor switching ---------- */
+/* ---------- design switching ---------- */
+const PHOSPHORS = [
+  { id: "amber", label: "Amber", c: "#FFB547", k: "#120C04" }, { id: "green", label: "Green", c: "#4CFF8F", k: "#04110A" },
+  { id: "red", label: "Red", c: "#FF5A5F", k: "#140506" },     { id: "blue", label: "Blue", c: "#5AA9FF", k: "#040A16" },
+  { id: "cyan", label: "Cyan", c: "#3FF2E6", k: "#031212" },   { id: "violet", label: "Violet", c: "#B98CFF", k: "#0D0716" },
+  { id: "pink", label: "Pink", c: "#FF6EC7", k: "#14060F" },   { id: "gray", label: "Gray", c: "#D8D8D8", k: "#0C0C0C" }
+];
+let PH = PHOSPHORS[0];
+
 const toast = msg => { const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove("show"), 1800); };
-function renderLegend() {
-  $("#legend").innerHTML = D.legend.map(([k, v]) => `<span>${k}</span><span>${v}</span>`).join("") + `<span>Phosphor</span><span><b id="leg-ph">${PH.label}</b></span><span>Cursor</span><span><b id="readout">Move over the hero</b></span>`;
+function renderDock() {
+  const i = DESIGNS.indexOf(D);
+  $("#d-num").textContent = pad(i + 1, 2); $("#d-total").textContent = pad(DESIGNS.length, 2); $("#d-name").textContent = D.label;
+  $("#d-sw").innerHTML = (D.id === "terminal" ? [PH.k, PH.c, PH.c] : D.sw).map(c => `<i style="background:${c}"></i>`).join("");
+  $$(".dp-card").forEach(c => c.setAttribute("aria-current", c.dataset.id === D.id));
 }
+function renderLegend() {
+  $("#legend").innerHTML = D.legend.map(([k, v]) => `<span>${k}</span><span>${v}</span>`).join("") + (D.id === "terminal" ? `<span>Phosphor</span><span><b id="leg-ph">${PH.label}</b></span>` : "") + `<span>Cursor</span><span><b id="readout">Move over the hero</b></span>`;
+}
+function applyDesign(id) {
+  D = DESIGNS.find(d => d.id === id) || DESIGNS[0];
+  root.dataset.design = D.id;
+  try { localStorage.setItem("aw-design", D.id); } catch (e) {}
+  loadFonts(D); readColors(); renderLegend(); renderDock();
+  $("#foot-verb").textContent = D.verb;
+  if (E.canvas) heroScene();
+  redrawPlates(); nameIntro(); window.__relabel?.();
+}
+function switchDesign(id, ev) {
+  if (id === D.id) return;
+  const b = ev?.currentTarget?.getBoundingClientRect?.();
+  root.style.setProperty("--vx", (ev?.clientX || (b ? b.left + b.width / 2 : innerWidth / 2)) + "px");
+  root.style.setProperty("--vy", (ev?.clientY || (b ? b.top + b.height / 2 : innerHeight - 40)) + "px");
+  const go = () => applyDesign(id);
+  if (document.startViewTransition && !reduce) document.startViewTransition(go); else go();
+  toast(`${pad(DESIGNS.findIndex(d => d.id === id) + 1, 2)} · ${DESIGNS.find(d => d.id === id).label}`);
+}
+const stepDesign = (k, ev) => { const i = DESIGNS.indexOf(D); switchDesign(DESIGNS[(i + k + DESIGNS.length) % DESIGNS.length].id, ev); };
 function applyPhosphor(id) {
   PH = PHOSPHORS.find(p => p.id === id) || PHOSPHORS[0];
   if (PH.id === "amber") delete root.dataset.phosphor; else root.dataset.phosphor = PH.id;
   try { localStorage.setItem("aw-phosphor", PH.id); } catch (e) {}
   readColors();
-  $("#d-name").textContent = PH.label; const lp = $("#leg-ph"); if (lp) lp.textContent = PH.label;
+  renderDock(); const lp = $("#leg-ph"); if (lp) lp.textContent = PH.label;
   $$(".swatch").forEach(b => b.setAttribute("aria-pressed", b.dataset.id === PH.id));
-  heroKick(); redrawPlates();
+  if (D.id === "terminal") { heroKick(); redrawPlates(); }
 }
 function switchPhosphor(id, ev) {
   if (id === PH.id) return;
@@ -972,9 +1688,22 @@ const stepPhosphor = k => { const i = PHOSPHORS.indexOf(PH); switchPhosphor(PHOS
 function dockInit() {
   $("#swatches").innerHTML = PHOSPHORS.map(p => `<button class="swatch" type="button" data-id="${p.id}" style="--c:${p.c};--k:${p.k}" aria-label="${p.label} phosphor" title="${p.label}" aria-pressed="false"></button>`).join("");
   $("#swatches").addEventListener("click", e => { const b = e.target.closest(".swatch"); if (b) switchPhosphor(b.dataset.id, e); });
+  const panel = $("#dpanel"), btn = $("#d-open");
+  $("#dp-grid").innerHTML = DESIGNS.map((d, i) => `
+    <button class="dp-card" type="button" data-id="${d.id}">
+      <span class="dp-prev" style="background:${d.sw[0]}"><span class="aa" style="font-family:${esc(d.face)};color:${d.sw[1]}">Aa</span><span class="bars"><i style="background:${d.sw[1]}"></i><i style="background:${d.sw[2]}"></i></span></span>
+      <b>${esc(d.label)} <span class="dp-num" style="display:inline;padding:0">${pad(i + 1, 2)}</span></b><span>${esc(d.blurb)}</span>
+    </button>`).join("");
+  const setOpen = open => { panel.hidden = !open; btn.setAttribute("aria-expanded", open); if (open) DESIGNS.forEach(loadFonts); };
+  btn.onclick = () => setOpen(panel.hidden);
+  $("#d-prev").onclick = e => stepDesign(-1, e); $("#d-next").onclick = e => stepDesign(1, e);
+  $("#dp-grid").addEventListener("click", e => { const c = e.target.closest(".dp-card"); if (c) { switchDesign(c.dataset.id, e); setOpen(false); } });
+  addEventListener("pointerdown", e => { if (!panel.hidden && !panel.contains(e.target) && !$("#dock").contains(e.target)) setOpen(false); });
   addEventListener("keydown", e => {
+    if (e.key === "Escape" && !panel.hidden) setOpen(false);
     if (/INPUT|TEXTAREA/.test(document.activeElement.tagName) || e.metaKey || e.ctrlKey || e.altKey) return;
-    if (e.key === "]") stepPhosphor(1); if (e.key === "[") stepPhosphor(-1);
+    if (e.key === "]") stepDesign(1); if (e.key === "[") stepDesign(-1);
+    if (D.id === "terminal") { if (e.key === "}") stepPhosphor(1); if (e.key === "{") stepPhosphor(-1); }
   });
 }
 
@@ -1069,13 +1798,21 @@ function interactions() {
   };
   $("#copy-email").onclick = copyEmail;
 
+  const isDark = () => root.dataset.theme ? root.dataset.theme === "dark" : !matchMedia("(prefers-color-scheme: light)").matches;
+  const repaint = () => { readColors(); heroKick(); redrawPlates(); };
+  const toggleTheme = () => { root.dataset.theme = isDark() ? "light" : "dark"; try { localStorage.setItem("aw-theme", root.dataset.theme); } catch (e) {} repaint(); toast(`${isDark() ? "Dark" : "Light"} theme`); };
+  $("#theme-toggle").onclick = toggleTheme;
+  matchMedia("(prefers-color-scheme: light)").addEventListener("change", repaint);
+
   const pal = $("#palette"), q = $("#pal-q"), list = $("#pal-list");
   const items = () => [
     ...SECTIONS.map(([id, l]) => ({ label: l, hint: "Section", ic: "#", run: () => document.getElementById(id).scrollIntoView({ behavior: reduce ? "auto" : "smooth" }) })),
-    ...PHOSPHORS.map(p => ({ label: `${p.label} phosphor`, hint: p.id === PH.id ? "Current" : "Colour", ic: "■", run: () => switchPhosphor(p.id) })),
+    ...DESIGNS.map((d, i) => ({ label: `${d.label} design`, hint: d.id === D.id ? "Current" : `Design ${pad(i + 1, 2)}`, ic: "◧", run: () => switchDesign(d.id) })),
+    ...PHOSPHORS.map(p => ({ label: `Terminal · ${p.label}`, hint: D.id === "terminal" && p.id === PH.id ? "Current" : "Colour", ic: "■", run: () => { if (D.id !== "terminal") switchDesign("terminal"); switchPhosphor(p.id); } })),
     ...PROFILE.socials.map(s => ({ label: `Open ${s.label}`, hint: s.handle, ic: "↗", href: s.url })),
     ...PROFILE.projects.filter(p => p.code).map(p => ({ label: `${p.title} source`, hint: "Project", ic: "↗", href: p.code })),
-    { label: "Copy email address", hint: "Action", ic: "@", run: copyEmail }
+    { label: "Copy email address", hint: "Action", ic: "@", run: copyEmail },
+    ...(D.id === "survey" ? [{ label: "Switch light / dark", hint: "Action", ic: "◐", run: toggleTheme }] : [])
   ];
   let shown = [], sel = 0;
   const draw = () => {
@@ -1106,24 +1843,25 @@ function interactions() {
 }
 
 /* ---------- boot ---------- */
-D = DESIGNS[0];
-root.dataset.design = D.id; loadFonts(D);
+try { const t = localStorage.getItem("aw-theme"); if (t) root.dataset.theme = t; } catch (e) {}
+let startId = DEFAULT_DESIGN;
+try { startId = localStorage.getItem("aw-design") || startId; } catch (e) {}
+const fromHash = location.hash.slice(1); if (DESIGNS.some(d => d.id === fromHash)) startId = fromHash;
 let startPh = DEFAULT_PHOSPHOR;
 try { startPh = localStorage.getItem("aw-phosphor") || startPh; } catch (e) {}
-const fromHash = location.hash.slice(1); if (PHOSPHORS.some(p => p.id === fromHash)) startPh = fromHash;
+if (PHOSPHORS.some(p => p.id === fromHash)) { startPh = fromHash; startId = "terminal"; }
 PH = PHOSPHORS.find(p => p.id === startPh) || PHOSPHORS[0];
 if (PH.id !== "amber") root.dataset.phosphor = PH.id;
-readColors();
+D = DESIGNS.find(d => d.id === startId) || DESIGNS[0];
+root.dataset.design = D.id; loadFonts(D); readColors();
 render();
 heroName();
 heroInit();
 dockInit();
 interactions();
-renderLegend();
-$("#foot-verb").textContent = D.verb;
-heroScene();
+applyDesign(D.id);
 applyPhosphor(PH.id);
-nameIntro();
 github();
 </script>
+
 </body></html>
